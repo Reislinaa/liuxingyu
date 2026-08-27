@@ -1,0 +1,22 @@
+/* 全局鼠标光效：fixed 全屏，跟随光标。
+   亮色主题下的极淡品牌色氛围光，不形成脏斑、不压文字。 */
+.page-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  --mx: 50vw;
+  --my: 30vh;
+  background:
+    radial-gradient(
+      720px circle at var(--mx) var(--my),
+      rgba(79, 70, 229, 0.04),
+      rgba(14, 165, 233, 0.02) 42%,
+      transparent 66%
+    );
+  transition: background 0.22s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-glow { transition: none; }
+}

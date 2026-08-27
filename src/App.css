@@ -1,0 +1,138 @@
+@import './components/Navbar.css';
+@import './components/Hero.css';
+@import './components/Features.css';
+@import './components/Footer.css';
+@import './components/AuthModal.css';
+@import './components/LegalPage.css';
+@import './pages/pages.css';
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== 通用按钮（平滑缓动） ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 26px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.35s var(--ease-out);
+  white-space: nowrap;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4F46E5 0%, #6D5BD0 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.6s var(--ease-out);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+}
+
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(124, 124, 255, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-ghost:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: rgba(79, 70, 229, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.16);
+}
+
+.btn-lg {
+  padding: 14px 32px;
+  font-size: 1rem;
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+/* ===== 全局卡片悬浮效果 ===== */
+.feature-card,
+.product-catalog-card,
+.value-card,
+.contact-card,
+.download-platform-card,
+.faq-item,
+.download-page-card,
+.stat-card,
+.highlight-card,
+.product-card,
+.pricing-card,
+.join-benefit,
+.timeline-content,
+.detail-side-card {
+  transition: transform 0.5s var(--ease-out), border-color 0.4s var(--ease-out),
+    box-shadow 0.5s var(--ease-out), background 0.4s var(--ease-out);
+}
+
+.feature-card:hover,
+.product-catalog-card:hover,
+.value-card:hover,
+.contact-card:hover,
+.download-platform-card:hover,
+.download-page-card:hover,
+.stat-card:hover,
+.highlight-card:hover,
+.product-card:hover,
+.join-benefit:hover,
+.detail-side-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 48px rgba(19, 19, 32, 0.12);
+}

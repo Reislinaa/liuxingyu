@@ -1,0 +1,38 @@
+/* Apple 广告式滚动线条 */
+.scroll-line {
+  position: relative;
+  height: 2px;
+  width: min(560px, 72%);
+  margin: 0 auto 56px;
+  background: var(--surface-3);
+  border-radius: 99px;
+}
+
+.scroll-line-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 99px;
+  background: var(--grad-brand);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.scroll-line-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(79, 70, 229, 0.14),
+    0 0 16px rgba(79, 70, 229, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line-fill {
+    transform: scaleX(1);
+  }
+}
