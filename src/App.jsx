@@ -12,19 +12,16 @@ import AuthModal from './components/AuthModal'
 import LegalPage from './components/LegalPage'
 import PageGlow from './components/PageGlow'
 import IntroPage from './pages/IntroPage'
-import ProductPage from './pages/ProductPage'
 import DownloadPage from './pages/DownloadPage'
 import AboutPage from './pages/AboutPage'
-import ProductDetailPage from './pages/ProductDetailPage'
-import JoinPage from './pages/JoinPage'
 
 function Home({ onStartDemo }) {
   return (
     <>
       <PageGlow />
-      <Hero onStartDemo={onStartDemo} />
+      <Hero onNavigate={onStartDemo} />
       <MindSection />
-      <Features onTryFeature={onStartDemo} />
+      <Features />
       <Showcase />
       <PlatformSection onNavigate={onStartDemo} />
     </>
@@ -33,7 +30,6 @@ function Home({ onStartDemo }) {
 
 function App() {
   const [page, setPage] = useState('home')
-  const [selectedProduct, setSelectedProduct] = useState(null)
   const [authOpen, setAuthOpen] = useState(false)
 
   const handleNavigate = (target) => {
@@ -41,39 +37,21 @@ function App() {
     window.scrollTo({ top: 0 })
   }
 
-  const handleOpenProduct = (product) => {
-    setSelectedProduct(product)
-    setPage('product-detail')
-    window.scrollTo({ top: 0 })
-  }
-
-  // 首页引导按钮点击：跳转到对应独立页面
-  const handleStartDemo = (target) => {
-    handleNavigate(target || 'home')
-  }
-
   const handleOpenLegal = (type) => setPage(type)
 
-  // 渲染内容区：每个导航项都是独立整页
   const renderContent = () => {
     switch (page) {
-      case 'intro':
+      case 'features':
         return <IntroPage onNavigate={handleNavigate} />
-      case 'product':
-        return <ProductPage onNavigate={handleNavigate} onOpenProduct={handleOpenProduct} />
-      case 'product-detail':
-        return <ProductDetailPage product={selectedProduct} onBack={() => setPage('product')} />
       case 'download':
         return <DownloadPage />
       case 'about':
         return <AboutPage onNavigate={handleNavigate} />
-      case 'join':
-        return <JoinPage onNavigate={handleNavigate} />
       case 'privacy':
       case 'terms':
         return <LegalPage type={page} onBack={() => setPage('home')} />
       default:
-        return <Home onStartDemo={handleStartDemo} />
+        return <Home onStartDemo={handleNavigate} />
     }
   }
 
@@ -81,7 +59,7 @@ function App() {
     <AuthProvider>
       <div className="app">
         <Navbar
-          onStartDemo={handleStartDemo}
+          onStartDemo={handleNavigate}
           onOpenAuth={() => setAuthOpen(true)}
           currentPage={page}
           onNavigate={handleNavigate}

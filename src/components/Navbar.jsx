@@ -3,20 +3,20 @@ import { useAuth } from '../context/AuthContext'
 
 function Logo() {
   return (
-    <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden>
       <defs>
         <linearGradient id="nl" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#4F46E5"/>
-          <stop offset="100%" stopColor="#8B5CF6"/>
+          <stop offset="0%" stopColor="#E85D4E"/>
+          <stop offset="100%" stopColor="#F59E0B"/>
         </linearGradient>
         <linearGradient id="nt" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#7C7CFF" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#FCD34D" stopOpacity="0.85"/>
+          <stop offset="0%" stopColor="#E85D4E" stopOpacity="0"/>
+          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.9"/>
         </linearGradient>
       </defs>
-      <circle cx="22" cy="10" r="3" fill="url(#nl)"/>
-      <path d="M22 10 L8 24" stroke="url(#nt)" strokeWidth="1.6" strokeLinecap="round"/>
-      <circle cx="22" cy="10" r="6" fill="url(#nl)" opacity="0.18"/>
+      <circle cx="22" cy="9" r="3" fill="url(#nl)"/>
+      <path d="M22 9 L7 24" stroke="url(#nt)" strokeWidth="1.8" strokeLinecap="round"/>
+      <circle cx="22" cy="9" r="6" fill="url(#nl)" opacity="0.16"/>
     </svg>
   )
 }
@@ -28,10 +28,9 @@ export default function Navbar({ onStartDemo, onOpenAuth, currentPage = 'home', 
 
   const navItems = [
     { key: 'home', label: '首页', page: 'home' },
-    { key: 'intro', label: '介绍', page: 'intro' },
-    { key: 'product', label: '产品服务', page: 'product' },
+    { key: 'features', label: '功能', page: 'features' },
     { key: 'download', label: '下载', page: 'download' },
-    { key: 'about', label: '关于我们', page: 'about' }
+    { key: 'about', label: '关于', page: 'about' }
   ]
 
   const handleNav = (page) => {

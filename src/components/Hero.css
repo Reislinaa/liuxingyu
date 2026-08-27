@@ -5,65 +5,46 @@
   align-items: center;
   overflow: hidden;
   background:
-    radial-gradient(1000px 600px at 80% -10%, rgba(79, 70, 229, 0.05), transparent 60%),
-    radial-gradient(800px 500px at 10% 110%, rgba(14, 165, 233, 0.05), transparent 60%),
+    radial-gradient(900px 500px at 80% -10%, rgba(232, 93, 78, 0.06), transparent 60%),
+    radial-gradient(700px 420px at 10% 110%, rgba(15, 118, 110, 0.05), transparent 60%),
     var(--bg);
+  padding: 60px 0 100px;
 }
 
-/* ============ Apple 流动光线背景 ============ */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-trails {
-  position: absolute;
-  inset: 0;
-}
-
-.light-trails-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* 一处极淡的品牌光晕，营造"流星照亮"的氛围，不形成脏斑 */
 .hero-glow {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    640px circle at 70% 30%,
-    rgba(244, 114, 182, 0.06),
-    rgba(14, 165, 233, 0.04) 40%,
+    600px circle at 50% 30%,
+    rgba(232, 93, 78, 0.06),
+    rgba(245, 158, 11, 0.03) 45%,
     transparent 65%
   );
-  animation: glowDrift 16s ease-in-out infinite alternate;
+  animation: glowDrift 18s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 @keyframes glowDrift {
   0% { opacity: 0.6; transform: translate3d(0, 0, 0); }
-  100% { opacity: 1; transform: translate3d(-4%, 3%, 0); }
+  100% { opacity: 1; transform: translate3d(-3%, 2%, 0); }
 }
 
-/* ============ 主内容（typeless 式居中大字） ============ */
 .hero-content {
   position: relative;
   z-index: 3;
   text-align: center;
-  max-width: 880px;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
-  padding-top: 40px;
 }
 
 .hero-tag {
   display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
   letter-spacing: 2px;
   color: var(--text-2);
-  padding: 8px 20px;
+  padding: 9px 20px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.6);
@@ -71,17 +52,16 @@
   margin-bottom: 44px;
 }
 
-/* Apple 风格超大英文标题 */
 .hero-title {
   margin: 0 0 32px;
 }
 
 .hero-line {
   display: block;
-  font-size: clamp(2.9rem, 8.5vw, 6.8rem);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   color: var(--text);
 }
 
@@ -90,13 +70,13 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding-bottom: 0.08em; /* 避免 descender 被裁 */
+  padding-bottom: 0.08em;
 }
 
 .hero-subtitle {
   font-size: 1.18rem;
   color: var(--text-2);
-  max-width: 600px;
+  max-width: 580px;
   margin: 0 auto 44px;
   line-height: 1.75;
 }
@@ -109,12 +89,16 @@
   margin-bottom: 72px;
 }
 
-/* ============ typeless 式对比模块 ============ */
+.hero-content .mockups {
+  margin-bottom: 72px;
+}
+
+/* typeless 式对比模块 */
 .hero-compare {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
-  padding: 22px 34px;
+  gap: 32px;
+  padding: 22px 36px;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -127,13 +111,13 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  min-width: 120px;
+  min-width: 130px;
 }
 
 .compare-label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   color: var(--text-light);
   text-transform: uppercase;
 }
@@ -145,8 +129,8 @@
 }
 
 .compare-num {
-  font-size: 2.4rem;
-  font-weight: 800;
+  font-size: 2.6rem;
+  font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-2);
 }
@@ -161,7 +145,7 @@
 }
 
 .compare-bar {
-  width: 120px;
+  width: 130px;
   height: 5px;
   border-radius: 99px;
   background: var(--surface-3);
@@ -175,7 +159,7 @@
 }
 
 .compare-bar-slow span {
-  width: 20%;
+  width: 22%;
   background: var(--text-light);
 }
 
@@ -185,7 +169,7 @@
 }
 
 .compare-arrow {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-light);
   animation: arrowPulse 2s ease-in-out infinite;
 }
@@ -195,11 +179,10 @@
   50% { transform: translateX(6px); opacity: 1; }
 }
 
-/* ============ 响应式 ============ */
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 96px 0 72px;
+    padding: 80px 0 64px;
   }
   .hero-tag {
     margin-bottom: 32px;
@@ -208,16 +191,16 @@
     font-size: 1rem;
   }
   .hero-actions {
-    margin-bottom: 52px;
+    margin-bottom: 48px;
   }
   .hero-compare {
-    gap: 18px;
-    padding: 18px 22px;
+    gap: 20px;
+    padding: 18px 24px;
   }
   .compare-item {
-    min-width: 92px;
+    min-width: 100px;
   }
   .compare-num {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
