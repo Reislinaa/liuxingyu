@@ -233,6 +233,14 @@
     align-items: center;
   }
 
+  .hero-col-left .reveal {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .hero-col-right {
     order: -1; /* mockup moves above the text on tablet */
   }

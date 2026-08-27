@@ -4,7 +4,6 @@ import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import StepsSection from './components/StepsSection'
-import MindSection from './components/MindSection'
 import FeatureShowcase from './components/FeatureShowcase'
 import EverywhereSection from './components/EverywhereSection'
 import PlatformSection from './components/PlatformSection'
@@ -22,7 +21,6 @@ function Home({ onStartDemo }) {
       <PageGlow />
       <Hero onNavigate={onStartDemo} />
       <StepsSection />
-      <MindSection />
       <FeatureShowcase />
       <EverywhereSection />
       <PlatformSection onNavigate={onStartDemo} />
