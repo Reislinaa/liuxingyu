@@ -121,99 +121,31 @@
   transform: translateY(-6px) scale(1.01);
 }
 
-/* ============ 手机聊天模拟 (iPhone 15 Pro style) ============ */
-.mockup-phone-wrap {
-  position: relative;
-  display: inline-block;
-}
-
-.mockup-phone-frame {
-  background: linear-gradient(145deg, #3a3a3c 0%, #1c1c1e 40%, #0c0c0e 100%);
-  border-radius: 50px;
-  padding: 11px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
-    0 0 0 2px rgba(0, 0, 0, 0.6),
-    0 50px 100px rgba(0, 0, 0, 0.4),
-    0 12px 32px rgba(0, 0, 0, 0.25);
-  max-width: 320px;
+/* ============ 聊天框模拟 (AI 语音转写) ============ */
+.mockup-chatbox {
+  width: 100%;
+  max-width: 340px;
   margin: 0 auto;
-  position: relative;
-}
-
-.mockup-phone-demo {
-  cursor: pointer;
-}
-
-/* Dynamic Island */
-.mockup-phone-island {
-  width: 88px;
-  height: 26px;
-  background: #000;
-  border-radius: 99px;
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-/* Side buttons */
-.mockup-phone-btn {
-  position: absolute;
-  background: linear-gradient(to right, #0c0c0e, #2a2a2c, #0c0c0e);
-  border-radius: 2px 0 0 2px;
-}
-
-.mockup-phone-btn-action {
-  left: -2px;
-  top: 88px;
-  width: 3px;
-  height: 28px;
-}
-
-.mockup-phone-btn-vol-up {
-  left: -2px;
-  top: 128px;
-  width: 3px;
-  height: 44px;
-}
-
-.mockup-phone-btn-vol-down {
-  left: -2px;
-  top: 182px;
-  width: 3px;
-  height: 44px;
-}
-
-.mockup-phone-btn-power {
-  right: -2px;
-  top: 120px;
-  width: 3px;
-  height: 72px;
-  border-radius: 0 2px 2px 0;
-  background: linear-gradient(to left, #0c0c0e, #2a2a2c, #0c0c0e);
-}
-
-.mockup-phone-screen {
-  background: var(--bg);
-  border-radius: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 1px 2px rgba(28, 28, 30, 0.04),
+    0 28px 64px rgba(28, 28, 30, 0.10);
   overflow: hidden;
-  padding-bottom: 16px;
-  padding-top: 10px;
-  position: relative;
+  font-family: var(--font);
 }
 
-.mockup-chat-header {
+.mockup-chatbox-header {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
 }
 
-.mockup-avatar {
+.mockup-chatbox-avatar {
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -226,252 +158,122 @@
   font-size: 0.9rem;
 }
 
-.mockup-chat-name {
+.mockup-chatbox-name {
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--text);
 }
 
-.mockup-chat-status {
+.mockup-chatbox-status {
   font-size: 0.75rem;
   color: var(--text-light);
 }
 
-.mockup-chat-body {
-  padding: 20px;
+.mockup-chatbox-body {
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-height: 240px;
+  gap: 14px;
+  min-height: 220px;
 }
 
-.mockup-bubble {
+.mockup-chatbox-bubble {
   max-width: 85%;
   padding: 12px 16px;
   border-radius: 18px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  opacity: 0;
-  transform: translateY(10px) scale(0.96);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  opacity: 1;
+  transform: none;
 }
 
-.mockup-bubble-them {
-  background: var(--surface-2);
+.mockup-chatbox-bubble-them {
+  background: var(--bg-2);
   color: var(--text);
   border-bottom-left-radius: 4px;
   align-self: flex-start;
 }
 
-.mockup-bubble-me {
+.mockup-chatbox-bubble-me {
   background: var(--grad-brand);
   color: #fff;
   border-bottom-right-radius: 4px;
   align-self: flex-end;
 }
 
-.mockup-bubble-voice {
-  display: flex;
+.mockup-chatbox-bubble-voice {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-width: 130px;
+  gap: 12px;
+  min-width: 140px;
+  padding: 14px 16px;
 }
 
-.mockup-voice-wave {
+.mockup-chatbox-wave {
   display: flex;
   align-items: center;
   gap: 3px;
   height: 24px;
 }
 
-.mockup-wave-bar {
+.mockup-chatbox-wave span {
+  display: block;
   width: 3px;
-  background: rgba(255, 255, 255, 0.85);
+  height: calc(var(--h) * 22px);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 99px;
-  transform: scaleY(0.3);
+  animation: chatboxWave 1.2s ease-in-out infinite alternate;
+  animation-delay: var(--d);
 }
 
-.mockup-wave-bar:nth-child(1) { height: 8px; }
-.mockup-wave-bar:nth-child(2) { height: 14px; }
-.mockup-wave-bar:nth-child(3) { height: 20px; }
-.mockup-wave-bar:nth-child(4) { height: 12px; }
-.mockup-wave-bar:nth-child(5) { height: 18px; }
-.mockup-wave-bar:nth-child(6) { height: 10px; }
-.mockup-wave-bar:nth-child(7) { height: 16px; }
-.mockup-wave-bar:nth-child(8) { height: 22px; }
-.mockup-wave-bar:nth-child(9) { height: 12px; }
-.mockup-wave-bar:nth-child(10) { height: 18px; }
-.mockup-wave-bar:nth-child(11) { height: 8px; }
-.mockup-wave-bar:nth-child(12) { height: 14px; }
-
-.mockup-voice-time {
-  font-size: 0.75rem;
-  opacity: 0.85;
+@keyframes chatboxWave {
+  from { transform: scaleY(0.35); opacity: 0.45; }
+  to   { transform: scaleY(1); opacity: 1; }
 }
 
-.mockup-typewriter {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  vertical-align: bottom;
+.mockup-chatbox-voice-time {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  font-variant-numeric: tabular-nums;
 }
 
-.mockup-chat-input {
-  margin: 0 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 10px 14px;
+.mockup-chatbox-footer {
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.mockup-chatbox-input {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
-.mockup-input-orb {
+.mockup-chatbox-input-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.mockup-chatbox-input-mic {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background: var(--grad-brand);
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
 }
 
-.mockup-input-orb svg {
+.mockup-chatbox-input-mic svg {
   width: 16px;
   height: 16px;
-}
-
-.mockup-input-text {
-  font-size: 0.85rem;
-  color: var(--text-light);
-}
-
-/* ============ 悬停演示动画 ============ */
-.mockup-hover-hint {
-  position: absolute;
-  bottom: -44px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  color: var(--text-light);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 8px 14px;
-  border-radius: 99px;
-  white-space: nowrap;
-  transition: all 0.35s var(--ease-out);
-}
-
-.mockup-hover-hint svg {
-  width: 14px;
-  height: 14px;
-}
-
-.mockup-speed-compare {
-  position: absolute;
-  top: 50%;
-  right: -190px;
-  transform: translateY(-50%);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 16px 40px rgba(28, 28, 30, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.5s var(--ease-out);
-  min-width: 160px;
-}
-
-.mockup-speed-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 0;
-}
-
-.mockup-speed-item span {
-  font-size: 0.75rem;
-  color: var(--text-light);
-}
-
-.mockup-speed-item strong {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.mockup-speed-item small {
-  font-size: 0.7rem;
-  color: var(--text-light);
-}
-
-.mockup-speed-fast strong {
-  color: var(--primary);
-}
-
-.mockup-speed-fast small {
-  color: var(--primary);
-  opacity: 0.8;
-}
-
-.mockup-speed-vs {
-  text-align: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--text-light);
-  letter-spacing: 1px;
-  padding: 6px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-/* 悬停时触发动画 */
-.mockup-phone-demo:hover .mockup-hover-hint {
-  opacity: 0;
-  transform: translateX(-50%) translateY(6px);
-}
-
-.mockup-phone-demo:hover .mockup-bubble-1 {
-  animation: bubble-in 0.5s var(--ease-out) 0.1s forwards;
-}
-
-.mockup-phone-demo:hover .mockup-bubble-2 {
-  animation: bubble-in 0.5s var(--ease-out) 0.7s forwards;
-}
-
-.mockup-phone-demo:hover .mockup-bubble-2 .mockup-wave-bar {
-  animation: wave 1s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.08s + 0.7s);
-}
-
-.mockup-phone-demo:hover .mockup-bubble-3 {
-  animation: bubble-in 0.5s var(--ease-out) 3.7s forwards;
-}
-
-.mockup-phone-demo:hover .mockup-bubble-3 .mockup-typewriter {
-  width: 100%;
-  transition: width 3s steps(18) 4.2s;
-}
-
-.mockup-phone-demo:hover .mockup-speed-compare {
-  opacity: 1;
-  transform: translateY(-50%) translateX(10px);
-}
-
-@keyframes wave {
-  0%, 100% { transform: scaleY(0.6); }
-  50% { transform: scaleY(1); }
-}
-
-@keyframes bubble-in {
-  from { opacity: 0; transform: translateY(10px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* ============ 清理编辑器模拟 ============ */

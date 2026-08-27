@@ -67,68 +67,46 @@ const features = [
 
 function PhoneMockup() {
   return (
-    <div className="mockup-phone-wrap mockup-phone-demo">
-      <div className="mockup-phone-frame">
-        <div className="mockup-phone-btn mockup-phone-btn-action" />
-        <div className="mockup-phone-btn mockup-phone-btn-vol-up" />
-        <div className="mockup-phone-btn mockup-phone-btn-vol-down" />
-        <div className="mockup-phone-btn mockup-phone-btn-power" />
-        <div className="mockup-phone-screen">
-          <div className="mockup-phone-island" />
-          <div className="mockup-chat-header">
-            <div className="mockup-avatar">A</div>
-            <div>
-              <div className="mockup-chat-name">阿明</div>
-              <div className="mockup-chat-status">在线</div>
-            </div>
-          </div>
-          <div className="mockup-chat-body">
-            <div className="mockup-bubble mockup-bubble-them mockup-bubble-1">
-              晚上吃饭吗？
-            </div>
-            <div className="mockup-bubble mockup-bubble-me mockup-bubble-voice mockup-bubble-2">
-              <div className="mockup-voice-wave">
-                {[...Array(12)].map((_, i) => (
-                  <span key={i} className="mockup-wave-bar" style={{ '--i': i }} />
-                ))}
-              </div>
-              <span className="mockup-voice-time">0:03</span>
-            </div>
-            <div className="mockup-bubble mockup-bubble-me mockup-bubble-3">
-              <span className="mockup-typewriter">好啊，想去那家新开的日料，七点可以吗？</span>
-            </div>
-          </div>
-          <div className="mockup-chat-input">
-            <div className="mockup-input-orb">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-              </svg>
-            </div>
-            <div className="mockup-input-text">按住说话</div>
-          </div>
+    <div className="mockup-chatbox">
+      <div className="mockup-chatbox-header">
+        <div className="mockup-chatbox-avatar">A</div>
+        <div className="mockup-chatbox-info">
+          <div className="mockup-chatbox-name">阿明</div>
+          <div className="mockup-chatbox-status">在线</div>
         </div>
       </div>
-
-      <div className="mockup-speed-compare">
-        <div className="mockup-speed-item">
-          <span>打字输入</span>
-          <strong>~12s</strong>
-          <small>逐字敲出</small>
+      <div className="mockup-chatbox-body">
+        <div className="mockup-chatbox-bubble mockup-chatbox-bubble-them">
+          晚上吃饭吗？
         </div>
-        <div className="mockup-speed-vs">VS</div>
-        <div className="mockup-speed-item mockup-speed-fast">
-          <span>语音输入</span>
-          <strong>~3s</strong>
-          <small>说完即成</small>
+        <div className="mockup-chatbox-bubble mockup-chatbox-bubble-me mockup-chatbox-bubble-voice">
+          <div className="mockup-chatbox-wave" aria-hidden="true">
+            {Array.from({ length: 18 }).map((_, i) => (
+              <span
+                key={i}
+                style={{
+                  '--h': (Math.sin(i * 0.7) * 0.45 + 0.55).toFixed(2),
+                  '--d': `${(i * 0.05).toFixed(2)}s`
+                }}
+              />
+            ))}
+          </div>
+          <span className="mockup-chatbox-voice-time">0:03</span>
+        </div>
+        <div className="mockup-chatbox-bubble mockup-chatbox-bubble-me">
+          好啊，想去那家新开的日料，七点可以吗？
         </div>
       </div>
-
-      <div className="mockup-hover-hint">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-        悬停体验
+      <div className="mockup-chatbox-footer">
+        <div className="mockup-chatbox-input">
+          <span className="mockup-chatbox-input-text">按住说话</span>
+          <span className="mockup-chatbox-input-mic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   )
@@ -429,7 +407,7 @@ export default function FeatureShowcase() {
         if (!band) return
         const visual = band.querySelector('.feature-mockup')
         const texts = band.querySelectorAll('.feature-text-line')
-        const bubbles = band.querySelectorAll('.mockup-bubble, .mockup-list-item, .mockup-vocab-item, .mockup-device, .mockup-tone-card, .mockup-privacy-node')
+        const bubbles = band.querySelectorAll('.mockup-chatbox-bubble, .mockup-list-item, .mockup-vocab-item, .mockup-device, .mockup-tone-card, .mockup-privacy-node')
         const strikeWords = band.querySelectorAll('.mockup-line-strike')
 
         const tl = gsap.timeline({
