@@ -1,0 +1,194 @@
+/* 产品本身用代码画 —— 真实输入法界面 mockup */
+
+.mockups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-top: 56px;
+}
+
+.mockup-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(19, 19, 32, 0.04),
+    0 24px 60px rgba(19, 19, 32, 0.10);
+  overflow: hidden;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mockup-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: #F4F4F8;
+  border-bottom: 1px solid var(--border);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.dot-r { background: #FF5F57; }
+.dot-y { background: #FEBC2E; }
+.dot-g { background: #28C840; }
+
+.mockup-app {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+}
+
+.mockup-body {
+  padding: 40px 44px 48px;
+}
+
+/* ===== 输入框 ===== */
+.mockup-input {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  position: relative;
+  min-height: 44px;
+}
+
+.typed { color: var(--text); }
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--primary);
+  vertical-align: -2px;
+  margin-left: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+.ghost {
+  color: rgba(79, 70, 229, 0.45);
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ===== 联想词 ===== */
+.mockup-suggestions {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  color: var(--text-2);
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.chip em {
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-light);
+  background: var(--surface-3);
+  width: 18px;
+  height: 18px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 4px;
+}
+
+.chip-active {
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.06);
+  color: var(--primary);
+}
+
+.chip-active em {
+  background: var(--primary);
+  color: #fff;
+}
+
+.mockup-meta {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-light);
+  font-size: 0.82rem;
+}
+
+.kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  color: var(--text-2);
+}
+
+.meta-hint { margin-left: 8px; }
+
+/* ===== 波形 ===== */
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 80px;
+  margin-bottom: 28px;
+}
+
+.wave span {
+  display: block;
+  width: 4px;
+  height: calc(var(--h) * 70px);
+  background: var(--primary);
+  border-radius: 99px;
+  opacity: 0.7;
+  animation: waveBar 1.2s ease-in-out infinite alternate;
+  animation-delay: var(--d);
+}
+
+@keyframes waveBar {
+  from { transform: scaleY(0.35); opacity: 0.45; }
+  to   { transform: scaleY(1); opacity: 0.85; }
+}
+
+.mockup-transcript {
+  border-top: 1px dashed var(--border);
+  padding-top: 22px;
+}
+
+.transcript-line {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.transcript-fade {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  margin: 0;
+}

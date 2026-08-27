@@ -5,75 +5,74 @@ import './MindToText.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// 想法片段：随滚动，多个"思想点"通过线条汇聚成一句话
-const THOUGHTS = ['想法', '灵感', '思路', '片段', '点子', '心得']
+const THOUGHTS = ['想法', '灵感', '思路', '片段', '一句', '一句']
 const SENTENCE = '让每一次表达，都如流星般汇聚成形'
 
+// 克制版：细线 + 小圆点 + 慢精准时序
 export default function MindToText() {
   const root = useRef(null)
-  const dotsRef = useRef(null)
-  const textRef = useRef(null)
+  const stage = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const dots = gsap.utils.toArray('.mind-dot')
       const lines = gsap.utils.toArray('.mind-line')
+      const dots = gsap.utils.toArray('.mind-dot')
+      const chars = gsap.utils.toArray('.mind-char')
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root.current,
-          start: 'top 80%',
-          end: 'top 20%',
+          start: 'top 75%',
+          end: 'top 25%',
           scrub: 0.6
         }
       })
-
-      // 想法点依次浮现
-      tl.fromTo(dots, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.12, ease: 'back.out(2)', duration: 0.5 }, 0)
-      // 线条从各点画到中心
-      tl.fromTo(lines, { scaleX: 0, transformOrigin: 'left center' }, { scaleX: 1, stagger: 0.08, duration: 0.4, ease: 'power2.out' }, 0.6)
-      // 文字逐字浮现
-      tl.fromTo('.mind-char', { opacity: 0, y: 12, filter: 'blur(4px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', stagger: 0.04, duration: 0.3, ease: 'power2.out' }, 1.1)
+      tl.fromTo(dots, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, stagger: 0.06, duration: 0.4, ease: 'power2.out' }, 0)
+      tl.fromTo(lines, { strokeDashoffset: 300 }, { strokeDashoffset: 0, stagger: 0.05, duration: 0.5, ease: 'power2.inOut' }, 0.5)
+      tl.fromTo(chars, { opacity: 0, y: 6 }, { opacity: 1, y: 0, stagger: 0.02, duration: 0.25, ease: 'power2.out' }, 1.2)
     }, root)
     return () => ctx.revert()
   }, [])
 
+  // 计算各圆点位置（圆形分布，中心 300,150）
+  const cx0 = 300, cy0 = 150
+  const rx = 130, ry = 95
+
   return (
     <div className="mind" ref={root}>
-      <div className="mind-stage">
-        <svg className="mind-svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          {/* 汇聚线条 */}
-          <g ref={dotsRef}>
-            {THOUGHTS.map((_, i) => {
-              const angle = (i / THOUGHTS.length) * Math.PI * 2
-              const cx = 300 + Math.cos(angle) * 118
-              const cy = 150 + Math.sin(angle) * 92
-              return (
-                <line
-                  key={i}
-                  className="mind-line"
-                  x1={cx}
-                  y1={cy}
-                  x2="300"
-                  y2="150"
-                />
-              )
-            })}
-          </g>
-          {/* 想法点 */}
-          {THOUGHTS.map((t, i) => {
-            const angle = (i / THOUGHTS.length) * Math.PI * 2
-            const cx = 300 + Math.cos(angle) * 118
-            const cy = 150 + Math.sin(angle) * 92
-            return (
-              <g key={t} className="mind-dot" transform={`translate(${cx},${cy})`}>
-                <circle r="24" className="mind-dot-halo" />
-                <text textAnchor="middle" dominantBaseline="central" className="mind-dot-text">{t}</text>
-              </g>
-            )
-          })}
-        </svg>
-      </div>
+      <svg className="mind-svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet" ref={stage} aria-hidden="true">
+        {/* 细线：从每个想法点汇聚到中心 */}
+        {THOUGHTS.map((t, i) => {
+          const angle = (i / THOUGHTS.length) * Math.PI * 2 - Math.PI / 2
+          const cx = cx0 + Math.cos(angle) * rx
+          const cy = cy0 + Math.sin(angle) * ry
+          return (
+            <line
+              key={`l-${i}`}
+              className="mind-line"
+              x1={cx}
+              y1={cy}
+              x2={cx0}
+              y2={cy0}
+            />
+          )
+        })}
+        {/* 中心点 */}
+        <circle className="mind-core" cx={cx0} cy={cy0} r="4" />
+        {/* 想法点：小圆 + 文字 */}
+        {THOUGHTS.map((t, i) => {
+          const angle = (i / THOUGHTS.length) * Math.PI * 2 - Math.PI / 2
+          const cx = cx0 + Math.cos(angle) * rx
+          const cy = cy0 + Math.sin(angle) * ry
+          return (
+            <g key={`d-${i}`} className="mind-dot" transform={`translate(${cx},${cy})`}>
+              <circle r="22" className="mind-dot-ring" />
+              <circle r="3" className="mind-dot-fill" />
+              <text y="38" textAnchor="middle" className="mind-dot-text">{t}</text>
+            </g>
+          )
+        })}
+      </svg>
 
       <p className="mind-sentence">
         {SENTENCE.split('').map((c, i) => (
