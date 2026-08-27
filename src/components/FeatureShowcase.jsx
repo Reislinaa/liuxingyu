@@ -75,7 +75,7 @@ const features = [
 
 function PhoneMockup() {
   return (
-    <div className="mockup-phone">
+    <div className="mockup-phone mockup-phone-demo">
       <div className="mockup-phone-notch" />
       <div className="mockup-phone-screen">
         <div className="mockup-chat-header">
@@ -86,10 +86,10 @@ function PhoneMockup() {
           </div>
         </div>
         <div className="mockup-chat-body">
-          <div className="mockup-bubble mockup-bubble-them">
+          <div className="mockup-bubble mockup-bubble-them mockup-bubble-1">
             晚上吃饭吗？
           </div>
-          <div className="mockup-bubble mockup-bubble-me mockup-bubble-voice">
+          <div className="mockup-bubble mockup-bubble-me mockup-bubble-voice mockup-bubble-2">
             <div className="mockup-voice-wave">
               {[...Array(12)].map((_, i) => (
                 <span key={i} className="mockup-wave-bar" style={{ '--i': i }} />
@@ -97,8 +97,8 @@ function PhoneMockup() {
             </div>
             <span className="mockup-voice-time">0:08</span>
           </div>
-          <div className="mockup-bubble mockup-bubble-me">
-            好啊，想去那家新开的日料，七点可以吗？
+          <div className="mockup-bubble mockup-bubble-me mockup-bubble-3">
+            <span className="mockup-typewriter">好啊，想去那家新开的日料，七点可以吗？</span>
           </div>
         </div>
         <div className="mockup-chat-input">
@@ -110,6 +110,27 @@ function PhoneMockup() {
           </div>
           <div className="mockup-input-text">按住说话</div>
         </div>
+      </div>
+
+      <div className="mockup-speed-compare">
+        <div className="mockup-speed-item">
+          <span>打字输入</span>
+          <strong>~12s</strong>
+          <small>逐字敲出</small>
+        </div>
+        <div className="mockup-speed-vs">VS</div>
+        <div className="mockup-speed-item mockup-speed-fast">
+          <span>语音输入</span>
+          <strong>~3s</strong>
+          <small>说完即成</small>
+        </div>
+      </div>
+
+      <div className="mockup-hover-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+        悬停体验
       </div>
     </div>
   )

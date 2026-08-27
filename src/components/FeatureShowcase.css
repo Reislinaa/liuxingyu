@@ -28,18 +28,18 @@
 }
 
 .feature-band-inner {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 clamp(24px, 4vw, 72px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.9fr 1.1fr;
   align-items: center;
-  gap: 80px;
+  gap: clamp(40px, 5vw, 100px);
 }
 
 .feature-band-left .feature-band-content {
   order: 1;
-  padding-right: 40px;
+  padding-right: clamp(0px, 3vw, 40px);
 }
 
 .feature-band-left .feature-mockup {
@@ -48,7 +48,7 @@
 
 .feature-band-right .feature-band-content {
   order: 2;
-  padding-left: 40px;
+  padding-left: clamp(0px, 3vw, 40px);
 }
 
 .feature-band-right .feature-mockup {
@@ -103,12 +103,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
+  min-height: 460px;
 }
 
 .feature-mockup-frame {
   width: 100%;
-  max-width: 560px;
+  max-width: 620px;
   filter: drop-shadow(0 28px 64px rgba(28, 28, 30, 0.1));
   transition: transform 0.5s var(--ease-out);
 }
@@ -125,8 +125,13 @@
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08) inset,
     0 40px 80px rgba(0, 0, 0, 0.25);
-  max-width: 320px;
+  max-width: 340px;
   margin: 0 auto;
+  position: relative;
+}
+
+.mockup-phone-demo {
+  cursor: pointer;
 }
 
 .mockup-phone-notch {
@@ -188,12 +193,13 @@
 }
 
 .mockup-bubble {
-  max-width: 80%;
+  max-width: 85%;
   padding: 12px 16px;
   border-radius: 18px;
   font-size: 0.9rem;
   line-height: 1.5;
-  animation: bubble-in 0.5s var(--ease-out) forwards;
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
 }
 
 .mockup-bubble-them {
@@ -228,8 +234,7 @@
   width: 3px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 99px;
-  animation: wave 1s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.08s);
+  transform: scaleY(0.3);
 }
 
 .mockup-wave-bar:nth-child(1) { height: 8px; }
@@ -248,6 +253,14 @@
 .mockup-voice-time {
   font-size: 0.75rem;
   opacity: 0.85;
+}
+
+.mockup-typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  vertical-align: bottom;
 }
 
 .mockup-chat-input {
@@ -280,6 +293,122 @@
 .mockup-input-text {
   font-size: 0.85rem;
   color: var(--text-light);
+}
+
+/* ============ 悬停演示动画 ============ */
+.mockup-hover-hint {
+  position: absolute;
+  bottom: -44px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 99px;
+  white-space: nowrap;
+  transition: all 0.35s var(--ease-out);
+}
+
+.mockup-hover-hint svg {
+  width: 14px;
+  height: 14px;
+}
+
+.mockup-speed-compare {
+  position: absolute;
+  top: 50%;
+  right: -190px;
+  transform: translateY(-50%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(28, 28, 30, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s var(--ease-out);
+  min-width: 160px;
+}
+
+.mockup-speed-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+}
+
+.mockup-speed-item span {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.mockup-speed-item strong {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mockup-speed-item small {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+.mockup-speed-fast strong {
+  color: var(--primary);
+}
+
+.mockup-speed-fast small {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.mockup-speed-vs {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* 悬停时触发动画 */
+.mockup-phone-demo:hover .mockup-hover-hint {
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.mockup-phone-demo:hover .mockup-bubble-1 {
+  animation: bubble-in 0.5s var(--ease-out) 0.1s forwards;
+}
+
+.mockup-phone-demo:hover .mockup-bubble-2 {
+  animation: bubble-in 0.5s var(--ease-out) 0.7s forwards;
+}
+
+.mockup-phone-demo:hover .mockup-bubble-2 .mockup-wave-bar {
+  animation: wave 1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.08s + 0.7s);
+}
+
+.mockup-phone-demo:hover .mockup-bubble-3 {
+  animation: bubble-in 0.5s var(--ease-out) 1.4s forwards;
+}
+
+.mockup-phone-demo:hover .mockup-bubble-3 .mockup-typewriter {
+  width: 100%;
+  transition: width 1.4s steps(18) 1.9s;
+}
+
+.mockup-phone-demo:hover .mockup-speed-compare {
+  opacity: 1;
+  transform: translateY(-50%) translateX(10px);
 }
 
 @keyframes wave {
