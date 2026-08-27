@@ -7,8 +7,8 @@ import './EverywhereSection.css'
    圆心位于容器底部正中，仅露出上半弧（overflow hidden）。
    外环顺时针 40s/圈，内环逆时针 50s/圈。 */
 
-const OUTER = APP_ICONS.filter((_, i) => i % 7 === 0)
-const INNER = APP_ICONS.filter((_, i) => i % 7 === 1)
+const OUTER = APP_ICONS.filter((_, i) => i % 4 === 0)
+const INNER = APP_ICONS.filter((_, i) => i % 4 === 1)
 const N_OUTER = OUTER.length
 const N_INNER = INNER.length
 const STEP_OUTER = (2 * Math.PI) / N_OUTER
