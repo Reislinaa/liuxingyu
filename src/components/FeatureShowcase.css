@@ -1,433 +1,932 @@
 .feature-showcase {
-  background: var(--bg-2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg);
   position: relative;
   overflow: hidden;
-  padding: 110px 0 130px;
-}
-
-.feature-showcase::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(232, 93, 78, 0.3), transparent);
 }
 
 .feature-showcase-header {
   text-align: center;
-  margin-bottom: 80px;
+  padding: 110px 0 60px;
   position: relative;
   z-index: 2;
 }
 
-.feature-timeline {
-  position: absolute;
-  left: 50%;
-  top: 220px;
-  bottom: 120px;
-  width: 2px;
-  transform: translateX(-50%);
-  height: calc(100% - 340px);
-  z-index: 1;
-  overflow: visible;
-}
-
-.feature-timeline line {
-  stroke: var(--primary);
-  stroke-width: 2;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 6px rgba(232, 93, 78, 0.4));
-}
-
-.feature-items {
+.feature-bands {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 110px;
 }
 
-.feature-item {
+.feature-band {
+  padding: 90px 0;
+  position: relative;
+}
+
+.feature-band:nth-child(odd) {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.feature-band-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 48px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 80px;
-  position: relative;
 }
 
-.feature-item-left {
-  direction: ltr;
-}
-
-.feature-item-left .feature-content {
-  text-align: right;
+.feature-band-left .feature-band-content {
   order: 1;
+  padding-right: 40px;
 }
 
-.feature-item-left .feature-visual {
+.feature-band-left .feature-mockup {
   order: 2;
 }
 
-.feature-item-right .feature-content {
-  text-align: left;
+.feature-band-right .feature-band-content {
   order: 2;
+  padding-left: 40px;
 }
 
-.feature-item-right .feature-visual {
+.feature-band-right .feature-mockup {
   order: 1;
 }
 
-.feature-content {
-  max-width: 440px;
+.feature-band-content {
+  max-width: 520px;
 }
 
-.feature-item-left .feature-content {
+.feature-band-right .feature-band-content {
   margin-left: auto;
-}
-
-.feature-item-right .feature-content {
-  margin-right: auto;
 }
 
 .feature-label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-family: var(--font);
 }
 
 .feature-en {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 1.5px;
   color: var(--text-light);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .feature-title {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text);
-  margin-bottom: 14px;
-  line-height: 1.25;
+  margin-bottom: 18px;
+  line-height: 1.2;
 }
 
 .feature-desc {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-light);
-  line-height: 1.8;
+  line-height: 1.85;
   margin: 0;
 }
 
-.feature-visual {
+.feature-mockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+
+.feature-mockup-frame {
+  width: 100%;
+  max-width: 560px;
+  filter: drop-shadow(0 28px 64px rgba(28, 28, 30, 0.1));
+  transition: transform 0.5s var(--ease-out);
+}
+
+.feature-mockup-frame:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* ============ 手机聊天模拟 ============ */
+.mockup-phone {
+  background: #1C1C1E;
+  border-radius: 44px;
+  padding: 14px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 40px 80px rgba(0, 0, 0, 0.25);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.mockup-phone-notch {
+  width: 110px;
+  height: 24px;
+  background: #1C1C1E;
+  border-radius: 0 0 18px 18px;
+  margin: 0 auto -12px;
   position: relative;
+  z-index: 2;
+}
+
+.mockup-phone-screen {
+  background: var(--bg);
+  border-radius: 34px;
+  overflow: hidden;
+  padding-bottom: 16px;
+}
+
+.mockup-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.mockup-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.mockup-chat-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.mockup-chat-status {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.mockup-chat-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 240px;
+}
+
+.mockup-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  animation: bubble-in 0.5s var(--ease-out) forwards;
+}
+
+.mockup-bubble-them {
+  background: var(--surface-2);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+
+.mockup-bubble-me {
+  background: var(--grad-brand);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+}
+
+.mockup-bubble-voice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 130px;
+}
+
+.mockup-voice-wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+}
+
+.mockup-wave-bar {
+  width: 3px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 99px;
+  animation: wave 1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+.mockup-wave-bar:nth-child(1) { height: 8px; }
+.mockup-wave-bar:nth-child(2) { height: 14px; }
+.mockup-wave-bar:nth-child(3) { height: 20px; }
+.mockup-wave-bar:nth-child(4) { height: 12px; }
+.mockup-wave-bar:nth-child(5) { height: 18px; }
+.mockup-wave-bar:nth-child(6) { height: 10px; }
+.mockup-wave-bar:nth-child(7) { height: 16px; }
+.mockup-wave-bar:nth-child(8) { height: 22px; }
+.mockup-wave-bar:nth-child(9) { height: 12px; }
+.mockup-wave-bar:nth-child(10) { height: 18px; }
+.mockup-wave-bar:nth-child(11) { height: 8px; }
+.mockup-wave-bar:nth-child(12) { height: 14px; }
+
+.mockup-voice-time {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.mockup-chat-input {
+  margin: 0 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mockup-input-orb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.feature-visual-frame {
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 16/11;
+.mockup-input-orb svg {
+  width: 16px;
+  height: 16px;
+}
+
+.mockup-input-text {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.6); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes bubble-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ============ 清理编辑器模拟 ============ */
+.mockup-text-editor {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow:
-    0 24px 60px rgba(28, 28, 30, 0.06),
-    0 1px 0 rgba(255, 255, 255, 0.6) inset;
-  position: relative;
+  border-radius: 18px;
   overflow: hidden;
-  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), border-color 0.35s;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
 }
 
-.feature-visual-frame:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow:
-    0 32px 72px rgba(28, 28, 30, 0.1),
-    0 1px 0 rgba(255, 255, 255, 0.6) inset;
-  border-color: rgba(232, 93, 78, 0.22);
+.mockup-editor-header {
+  display: flex;
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
 }
 
-.feature-visual-frame::before {
-  content: '';
+.mockup-editor-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--surface-3);
+}
+
+.mockup-editor-dot:first-child { background: #E85D4E; }
+.mockup-editor-dot:nth-child(2) { background: #F59E0B; }
+.mockup-editor-dot:nth-child(3) { background: #0F766E; }
+
+.mockup-editor-body {
+  padding: 28px 32px;
+}
+
+.mockup-line {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.mockup-line-strike {
+  text-decoration: line-through;
+  color: var(--text-light);
+  opacity: 0.55;
+}
+
+.mockup-line-final {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.mockup-cleanup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--secondary);
+  padding: 8px 14px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid rgba(15, 118, 110, 0.16);
+}
+
+.mockup-cleanup-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============ 邮件格式化模拟 ============ */
+.mockup-email {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 32px;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+}
+
+.mockup-email-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mockup-email-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mockup-email-from {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.mockup-email-subj {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.mockup-email-p {
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.mockup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mockup-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.mockup-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ============ 语音编辑模拟 ============ */
+.mockup-editor-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+  position: relative;
+}
+
+.mockup-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mockup-toolbar-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border-strong);
+}
+
+.mockup-editor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mockup-edit-old {
+  color: var(--text-light);
+  text-decoration: line-through;
+  opacity: 0.5;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.mockup-edit-new {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.mockup-command-chip {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(232, 93, 78, 0.06) 0%, transparent 50%);
-  pointer-events: none;
+  bottom: -18px;
+  right: 24px;
+  background: var(--grad-brand);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 24px rgba(232, 93, 78, 0.3);
 }
 
-.feature-connector {
+.mockup-command-chip svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============ 文风切换模拟 ============ */
+.mockup-tone {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+}
+
+.mockup-tone-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 4px;
+  background: var(--bg-2);
+  border-radius: 12px;
+}
+
+.mockup-tone-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: default;
+}
+
+.mockup-tone-tab.mockup-tone-active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(28, 28, 30, 0.06);
+}
+
+.mockup-tone-card {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--bg-2);
+  margin-bottom: 12px;
+  opacity: 0.55;
+}
+
+.mockup-tone-card-active {
+  background: rgba(232, 93, 78, 0.06);
+  border: 1px solid rgba(232, 93, 78, 0.18);
+  opacity: 1;
+}
+
+.mockup-tone-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.mockup-tone-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============ 词库模拟 ============ */
+.mockup-vocab {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+}
+
+.mockup-vocab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mockup-vocab-title {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.mockup-vocab-count {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  background: var(--bg-2);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.mockup-vocab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mockup-vocab-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-2);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.mockup-vocab-delete {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface-3);
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: default;
+}
+
+.mockup-vocab-add {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ============ 全场景通用模拟 ============ */
+.mockup-devices {
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-device {
   position: absolute;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+}
+
+.mockup-device-phone {
+  width: 90px;
+  height: 170px;
+  left: 10%;
   top: 50%;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary), transparent);
-  opacity: 0.35;
   transform: translateY(-50%);
+  border-radius: 22px;
 }
 
-.feature-item-left .feature-connector {
-  left: calc(50% - 30px);
+.mockup-device-laptop {
+  width: 320px;
+  height: 200px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px 16px 6px 6px;
+  padding: 12px 12px 18px;
 }
 
-.feature-item-right .feature-connector {
-  right: calc(50% - 30px);
-  background: linear-gradient(90deg, transparent, var(--primary));
+.mockup-device-tablet {
+  width: 130px;
+  height: 170px;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 20px;
 }
 
-/* ============ SVG 视觉元素样式 ============ */
-.feature-visual-svg {
+.mockup-device-screen,
+.mockup-device-screen-lg {
   width: 100%;
   height: 100%;
-  overflow: visible;
+  background: var(--bg-2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.visual-line {
-  stroke: var(--text-2);
-  stroke-width: 2;
-  stroke-linecap: round;
-  fill: none;
-  opacity: 0.85;
+.mockup-device-screen-lg {
+  border-radius: 8px;
 }
 
-.visual-line-1 {
+.mockup-device-row {
+  display: flex;
+  gap: 20px;
+}
+
+.mockup-device-app {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(28, 28, 30, 0.05);
+}
+
+/* ============ 隐私模拟 ============ */
+.mockup-privacy {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+  text-align: center;
+}
+
+.mockup-shield {
+  width: 90px;
+  height: 100px;
+  margin: 0 auto 28px;
+  position: relative;
+}
+
+.mockup-shield svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mockup-shield path:first-child {
+  fill: rgba(232, 93, 78, 0.08);
   stroke: var(--primary);
   stroke-width: 2.5;
 }
 
-.visual-text {
-  font-size: 14px;
-  fill: var(--text-light);
-  font-weight: 500;
-  font-family: var(--font-cn);
-}
-
-.visual-bar {
-  fill: rgba(232, 93, 78, 0.35);
-  transform-origin: center;
-}
-
-.visual-bar:nth-child(odd) {
-  fill: rgba(232, 93, 78, 0.55);
-}
-
-.visual-cross {
-  stroke: var(--text-light);
-  stroke-width: 2;
-  opacity: 0.5;
-}
-
-.visual-check-circle {
+.mockup-shield rect,
+.mockup-shield path:not(:first-child) {
+  stroke: var(--text-2);
+  stroke-width: 3;
+  stroke-linecap: round;
   fill: none;
-  stroke: var(--secondary);
-  stroke-width: 2.5;
 }
 
-.visual-check-mark {
-  stroke: var(--secondary);
-  stroke-width: 2.5;
+.mockup-shield-badge {
+  position: absolute;
+  bottom: -6px;
+  right: -10px;
+  background: var(--grad-brand);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 99px;
+  box-shadow: 0 4px 12px rgba(232, 93, 78, 0.25);
+}
+
+.mockup-privacy-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mockup-privacy-node {
+  text-align: center;
+}
+
+.mockup-privacy-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+
+.mockup-privacy-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mockup-privacy-mic {
+  background: rgba(232, 93, 78, 0.1);
+  color: var(--primary);
+}
+
+.mockup-privacy-device {
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--secondary);
+}
+
+.mockup-privacy-done {
+  background: rgba(217, 119, 6, 0.1);
+  color: var(--gold);
+}
+
+.mockup-privacy-node span {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.mockup-privacy-arrow {
+  color: var(--text-light);
+  opacity: 0.4;
+  margin-top: -16px;
+}
+
+.mockup-privacy-arrow svg {
+  width: 32px;
+  height: 8px;
+}
+
+.mockup-privacy-arrow path {
+  stroke: currentColor;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
 }
 
-.visual-dot {
-  fill: var(--primary);
-}
-
-.visual-list-line {
-  stroke: var(--text-2);
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.visual-cursor-rect {
-  fill: var(--primary);
-  animation: cursor-blink 1.2s infinite;
-}
-
-.visual-cursor-line {
-  stroke: var(--primary);
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.visual-mic-body {
-  fill: none;
-  stroke: var(--text-2);
-  stroke-width: 2;
-}
-
-.visual-mic-stand,
-.visual-mic-arc {
-  stroke: var(--text-2);
-  stroke-width: 2;
-  stroke-linecap: round;
-  fill: none;
-}
-
-.visual-slider-bg {
-  fill: var(--surface-3);
-}
-
-.visual-slider-knob {
-  fill: var(--surface);
-  stroke: var(--primary);
-  stroke-width: 2;
-}
-
-.visual-word {
-  fill: var(--surface-2);
-  stroke: var(--border-strong);
-  stroke-width: 1;
-}
-
-.visual-word-text {
-  font-size: 12px;
-  fill: var(--text-2);
-  font-weight: 500;
-}
-
-.visual-center {
-  fill: var(--primary);
-}
-
-.visual-center-text {
-  font-size: 20px;
-  fill: #fff;
-  font-weight: 700;
-}
-
-.visual-app {
-  fill: var(--surface-2);
-  stroke: var(--border-strong);
-  stroke-width: 1;
-}
-
-.visual-app-text {
-  font-size: 16px;
-  fill: var(--text-2);
-  font-weight: 600;
-}
-
-.visual-keyboard {
-  fill: var(--surface);
-  stroke: var(--primary);
-  stroke-width: 2;
-}
-
-.visual-keyboard-text {
-  font-size: 18px;
-  fill: var(--primary);
-}
-
-.visual-shield-shape {
-  fill: rgba(232, 93, 78, 0.08);
-  stroke: var(--primary);
-  stroke-width: 2;
-}
-
-.visual-lock-body,
-.visual-lock-arc {
-  fill: none;
-  stroke: var(--text-2);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-
-@keyframes cursor-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0.25; }
-}
-
-/* ============ 动画初始状态 ============ */
-.feature-visual-frame .visual-line,
-.feature-visual-frame .visual-bar,
-.feature-visual-frame .visual-dot,
-.feature-visual-frame .visual-cross,
-.feature-visual-frame .visual-check,
-.feature-visual-frame .visual-word,
-.feature-visual-frame .visual-app,
-.feature-visual-frame .visual-shield {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
 /* ============ 响应式 ============ */
-@media (max-width: 992px) {
-  .feature-showcase {
-    padding: 80px 0 100px;
-  }
-  .feature-showcase-header {
-    margin-bottom: 60px;
-  }
-  .feature-timeline {
-    left: 24px;
-    transform: none;
-  }
-  .feature-item {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .feature-item-left .feature-content,
-  .feature-item-right .feature-content {
-    text-align: left;
-    order: 2;
-    margin: 0;
-    padding-left: 48px;
-  }
-  .feature-item-left .feature-visual,
-  .feature-item-right .feature-visual {
-    order: 1;
-    padding-left: 48px;
-  }
-  .feature-connector {
-    display: none;
+@media (max-width: 1100px) {
+  .feature-band-inner {
+    gap: 50px;
+    padding: 0 32px;
   }
   .feature-title {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
-  .feature-visual-frame {
+  .feature-mockup {
+    min-height: 360px;
+  }
+  .feature-mockup-frame {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 900px) {
+  .feature-showcase-header {
+    padding: 70px 0 40px;
+  }
+  .feature-band {
+    padding: 60px 0;
+  }
+  .feature-band-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .feature-band-left .feature-band-content,
+  .feature-band-right .feature-band-content {
+    order: 2;
+    padding: 0;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .feature-band-left .feature-mockup,
+  .feature-band-right .feature-mockup {
+    order: 1;
+  }
+  .feature-mockup {
+    min-height: auto;
+  }
+  .feature-mockup-frame {
     max-width: 420px;
+  }
+  .container-wide {
+    padding: 0 24px;
   }
 }
 
 @media (max-width: 640px) {
-  .feature-showcase {
-    padding: 60px 0 80px;
+  .feature-showcase-header {
+    padding: 50px 0 30px;
   }
-  .feature-items {
-    gap: 70px;
+  .feature-band {
+    padding: 44px 0;
   }
-  .feature-item-left .feature-content,
-  .feature-item-right .feature-content,
-  .feature-item-left .feature-visual,
-  .feature-item-right .feature-visual {
-    padding-left: 36px;
+  .feature-band-inner {
+    padding: 0 20px;
   }
   .feature-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
   .feature-desc {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
-  .feature-visual-frame {
-    padding: 18px;
-    border-radius: 20px;
+  .mockup-devices {
+    height: 280px;
   }
-  .feature-timeline {
-    left: 16px;
+  .mockup-device-laptop {
+    width: 220px;
+    height: 140px;
+  }
+  .mockup-device-phone {
+    width: 70px;
+    height: 130px;
+    left: 2%;
+  }
+  .mockup-device-tablet {
+    width: 100px;
+    height: 130px;
+    right: 2%;
+  }
+  .mockup-device-app {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .mockup-privacy-flow {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mockup-privacy-arrow {
+    transform: rotate(90deg);
+    margin-top: 0;
   }
 }

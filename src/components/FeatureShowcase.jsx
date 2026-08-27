@@ -13,7 +13,7 @@ const features = [
     en: 'Voice to Text',
     title: 'AI 语音转写',
     desc: '自然说话即可生成准确文字。无论是长句还是专业术语，都能被清晰识别并转写成可直接发送的内容。',
-    visual: 'waveform'
+    mockup: 'phone'
   },
   {
     id: 'correct',
@@ -21,7 +21,7 @@ const features = [
     en: 'Self-Correction',
     title: '自我纠正识别',
     desc: '嘴瓢、重复、自我纠正都会被智能过滤。你说"不对，改成..."，它只保留最终想表达的意思。',
-    visual: 'cleanup'
+    mockup: 'cleanup'
   },
   {
     id: 'format',
@@ -29,7 +29,7 @@ const features = [
     en: 'Auto Format',
     title: '自动格式化',
     desc: '口述的清单、步骤、要点会被自动整理成结构化文本。告别手动排版，开口就是成品。',
-    visual: 'format'
+    mockup: 'format'
   },
   {
     id: 'edit',
@@ -37,7 +37,7 @@ const features = [
     en: 'Speak to Edit',
     title: '语音编辑',
     desc: '不用手动选字删改，直接说"把最后一句改正式一点"，文字就会按你的指令变化。',
-    visual: 'edit'
+    mockup: 'edit'
   },
   {
     id: 'tone',
@@ -45,7 +45,7 @@ const features = [
     en: 'Personal Tone',
     title: '个性化文风',
     desc: '学习你的语气、习惯和表达偏好。给朋友轻松，给客户正式，让输出始终像你自己写的。',
-    visual: 'tone'
+    mockup: 'tone'
   },
   {
     id: 'vocab',
@@ -53,7 +53,7 @@ const features = [
     en: 'Custom Vocabulary',
     title: '个人词库',
     desc: '添加专业名词、品牌名、缩写或生僻词，越用越准，避免反复纠正同一个人名或术语。',
-    visual: 'vocab'
+    mockup: 'vocab'
   },
   {
     id: 'everywhere',
@@ -61,7 +61,7 @@ const features = [
     en: 'Works Everywhere',
     title: '全场景通用',
     desc: '在微信、飞书、邮件、笔记、代码编辑器甚至浏览器表单中都能使用，不挑应用。',
-    visual: 'everywhere'
+    mockup: 'everywhere'
   },
   {
     id: 'privacy',
@@ -69,242 +69,306 @@ const features = [
     en: 'Privacy First',
     title: '隐私优先',
     desc: '语音与文本优先在本地处理，敏感内容无需上传云端，你的表达只属于你。',
-    visual: 'privacy'
+    mockup: 'privacy'
   }
 ]
 
-function WaveformVisual() {
+function PhoneMockup() {
   return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M40 110 Q90 60 140 110 T240 110" />
-        <path className="visual-line visual-line-2" d="M60 110 L120 110" />
-        <path className="visual-line visual-line-3" d="M140 110 L260 110" />
-      </g>
-      <g className="visual-bars">
-        {[40, 70, 100, 130, 160, 190, 220, 250, 280].map((x, i) => (
-          <rect key={i} className={`visual-bar visual-bar-${i + 1}`} x={x} y={90} width={12} height={40} rx="6" />
+    <div className="mockup-phone">
+      <div className="mockup-phone-notch" />
+      <div className="mockup-phone-screen">
+        <div className="mockup-chat-header">
+          <div className="mockup-avatar">A</div>
+          <div>
+            <div className="mockup-chat-name">阿明</div>
+            <div className="mockup-chat-status">在线</div>
+          </div>
+        </div>
+        <div className="mockup-chat-body">
+          <div className="mockup-bubble mockup-bubble-them">
+            晚上吃饭吗？
+          </div>
+          <div className="mockup-bubble mockup-bubble-me mockup-bubble-voice">
+            <div className="mockup-voice-wave">
+              {[...Array(12)].map((_, i) => (
+                <span key={i} className="mockup-wave-bar" style={{ '--i': i }} />
+              ))}
+            </div>
+            <span className="mockup-voice-time">0:08</span>
+          </div>
+          <div className="mockup-bubble mockup-bubble-me">
+            好啊，想去那家新开的日料，七点可以吗？
+          </div>
+        </div>
+        <div className="mockup-chat-input">
+          <div className="mockup-input-orb">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            </svg>
+          </div>
+          <div className="mockup-input-text">按住说话</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function CleanupMockup() {
+  return (
+    <div className="mockup-text-editor">
+      <div className="mockup-editor-header">
+        <div className="mockup-editor-dot" />
+        <div className="mockup-editor-dot" />
+        <div className="mockup-editor-dot" />
+      </div>
+      <div className="mockup-editor-body">
+        <p className="mockup-line mockup-line-strike">我们那个嗯明天的会议改成下午两点吧，不对，改成三点。</p>
+        <p className="mockup-line mockup-line-final">明天的会议改成下午三点。</p>
+        <div className="mockup-cleanup-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+          已清理 6 个冗余词
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function FormatMockup() {
+  return (
+    <div className="mockup-email">
+      <div className="mockup-email-header">
+        <div className="mockup-email-avatar">李</div>
+        <div>
+          <div className="mockup-email-from">李经理</div>
+          <div className="mockup-email-subj">下周工作计划</div>
+        </div>
+      </div>
+      <div className="mockup-email-body">
+        <p className="mockup-email-p">已完成本周复盘，下周重点：</p>
+        <div className="mockup-list">
+          <div className="mockup-list-item"><span className="mockup-bullet" />完成产品需求评审</div>
+          <div className="mockup-list-item"><span className="mockup-bullet" />输出 UI 设计稿</div>
+          <div className="mockup-list-item"><span className="mockup-bullet" />召开技术对齐会</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function EditMockup() {
+  return (
+    <div className="mockup-editor-card">
+      <div className="mockup-editor-toolbar">
+        <span>B</span>
+        <span>I</span>
+        <span>U</span>
+        <span className="mockup-toolbar-divider" />
+        <span>⋯</span>
+      </div>
+      <div className="mockup-editor-content">
+        <p className="mockup-edit-old">这个方案我觉得还可以，再改改吧。</p>
+        <p className="mockup-edit-new">该方案具备可行性，建议进一步完善后推进。</p>
+      </div>
+      <div className="mockup-command-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+        </svg>
+        "改正式一点"
+      </div>
+    </div>
+  )
+}
+
+function ToneMockup() {
+  return (
+    <div className="mockup-tone">
+      <div className="mockup-tone-tabs">
+        <div className="mockup-tone-tab mockup-tone-active">正式</div>
+        <div className="mockup-tone-tab">轻松</div>
+        <div className="mockup-tone-tab">亲切</div>
+      </div>
+      <div className="mockup-tone-card">
+        <div className="mockup-tone-label">轻松版</div>
+        <p className="mockup-tone-text">嘿，方案我看了，感觉不错，咱们再细化一下？</p>
+      </div>
+      <div className="mockup-tone-card mockup-tone-card-active">
+        <div className="mockup-tone-label">正式版</div>
+        <p className="mockup-tone-text">该方案整体可行，建议进一步细化后推进实施。</p>
+      </div>
+    </div>
+  )
+}
+
+function VocabMockup() {
+  return (
+    <div className="mockup-vocab">
+      <div className="mockup-vocab-header">
+        <div className="mockup-vocab-title">个人词库</div>
+        <div className="mockup-vocab-count">4 个词条</div>
+      </div>
+      <div className="mockup-vocab-list">
+        {['流星语', 'Typeless', 'LLM', '多模态'].map((word) => (
+          <div key={word} className="mockup-vocab-item">
+            <span>{word}</span>
+            <button className="mockup-vocab-delete">×</button>
+          </div>
         ))}
-      </g>
-      <text className="visual-text" x="160" y="185" textAnchor="middle">"说出来，即成文"</text>
-    </svg>
+      </div>
+      <div className="mockup-vocab-add">
+        <span>+</span>
+        添加新词
+      </div>
+    </div>
   )
 }
 
-function CleanupVisual() {
+function EverywhereMockup() {
   return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M50 70 L270 70" />
-        <path className="visual-line visual-line-2" d="M50 100 L200 100" />
-        <path className="visual-line visual-line-3" d="M50 130 L240 130" />
-      </g>
-      <g className="visual-crosses">
-        <path className="visual-cross" d="M60 62 L90 78 M90 62 L60 78" />
-        <path className="visual-cross" d="M60 92 L180 108 M180 92 L60 108" />
-      </g>
-      <g className="visual-check">
-        <circle className="visual-check-circle" cx="250" cy="160" r="22" />
-        <path className="visual-check-mark" d="M238 160 L248 170 L265 150" />
-      </g>
-      <text className="visual-text visual-text-clean" x="160" y="170" textAnchor="middle">只保留最终表达</text>
-    </svg>
+    <div className="mockup-devices">
+      <div className="mockup-device mockup-device-phone">
+        <div className="mockup-device-screen">
+          <div className="mockup-device-app">聊</div>
+        </div>
+      </div>
+      <div className="mockup-device mockup-device-laptop">
+        <div className="mockup-device-screen-lg">
+          <div className="mockup-device-row">
+            <div className="mockup-device-app">邮</div>
+            <div className="mockup-device-app">记</div>
+            <div className="mockup-device-app">码</div>
+          </div>
+        </div>
+      </div>
+      <div className="mockup-device mockup-device-tablet">
+        <div className="mockup-device-screen">
+          <div className="mockup-device-app">表</div>
+        </div>
+      </div>
+    </div>
   )
 }
 
-function FormatVisual() {
+function PrivacyMockup() {
   return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M50 60 Q160 40 270 60" />
-        <path className="visual-line visual-line-2" d="M50 150 L270 150" />
-      </g>
-      <g className="visual-list">
-        <circle className="visual-dot" cx="70" cy="100" r="4" />
-        <path className="visual-list-line" d="M90 100 L250 100" />
-        <circle className="visual-dot" cx="70" cy="130" r="4" />
-        <path className="visual-list-line" d="M90 130 L220 130" />
-        <circle className="visual-dot" cx="70" cy="160" r="4" />
-        <path className="visual-list-line" d="M90 160 L240 160" />
-      </g>
-      <text className="visual-text" x="160" y="205" textAnchor="middle">自动整理成列表</text>
-    </svg>
+    <div className="mockup-privacy">
+      <div className="mockup-shield">
+        <svg viewBox="0 0 80 90" fill="none">
+          <path d="M40 5 L70 20 V45 Q70 70 40 85 Q10 70 10 45 V20 Z" />
+          <rect x="32" y="40" width="16" height="18" rx="2" />
+          <path d="M32 40 V34 Q32 26 40 26 Q48 26 48 34 V40" />
+        </svg>
+        <div className="mockup-shield-badge">本地</div>
+      </div>
+      <div className="mockup-privacy-flow">
+        <div className="mockup-privacy-node">
+          <div className="mockup-privacy-icon mockup-privacy-mic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            </svg>
+          </div>
+          <span>语音输入</span>
+        </div>
+        <div className="mockup-privacy-arrow">
+          <svg viewBox="0 0 40 8" fill="none">
+            <path d="M0 4 H36 M32 1 L36 4 L32 7" />
+          </svg>
+        </div>
+        <div className="mockup-privacy-node">
+          <div className="mockup-privacy-icon mockup-privacy-device">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="5" y="2" width="14" height="20" rx="2" />
+              <line x1="12" y1="18" x2="12" y2="18.01" />
+            </svg>
+          </div>
+          <span>本地处理</span>
+        </div>
+        <div className="mockup-privacy-arrow">
+          <svg viewBox="0 0 40 8" fill="none">
+            <path d="M0 4 H36 M32 1 L36 4 L32 7" />
+          </svg>
+        </div>
+        <div className="mockup-privacy-node">
+          <div className="mockup-privacy-icon mockup-privacy-done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+          </div>
+          <span>输出文字</span>
+        </div>
+      </div>
+    </div>
   )
 }
 
-function EditVisual() {
-  return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M50 120 L270 120" />
-        <path className="visual-line visual-line-2" d="M190 120 L230 80" />
-        <path className="visual-line visual-line-3" d="M230 80 L270 80" />
-      </g>
-      <g className="visual-cursor">
-        <rect className="visual-cursor-rect" x="140" y="90" width="2" height="60" />
-        <path className="visual-cursor-line" d="M130 150 L150 150" />
-      </g>
-      <g className="visual-mic">
-        <rect className="visual-mic-body" x="235" y="55" width="20" height="34" rx="10" />
-        <path className="visual-mic-stand" d="M245 89 L245 105" />
-        <path className="visual-mic-arc" d="M228 78 Q228 100 245 100 Q262 100 262 78" />
-      </g>
-      <text className="visual-text" x="160" y="185" textAnchor="middle">"改正式一点"</text>
-    </svg>
-  )
-}
-
-function ToneVisual() {
-  return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M50 110 Q110 70 160 110 Q210 150 270 110" />
-        <path className="visual-line visual-line-2" d="M50 140 L270 140" />
-      </g>
-      <g className="visual-sliders">
-        <rect className="visual-slider-bg" x="60" y="70" width="200" height="6" rx="3" />
-        <circle className="visual-slider-knob" cx="90" cy="73" r="8" />
-        <rect className="visual-slider-bg" x="60" y="170" width="200" height="6" rx="3" />
-        <circle className="visual-slider-knob" cx="220" cy="173" r="8" />
-      </g>
-      <text className="visual-text visual-text-left" x="90" y="60" textAnchor="middle">轻松</text>
-      <text className="visual-text visual-text-right" x="220" y="200" textAnchor="middle">正式</text>
-    </svg>
-  )
-}
-
-function VocabVisual() {
-  return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M60 110 Q110 70 160 110" />
-        <path className="visual-line visual-line-2" d="M160 110 Q210 150 260 110" />
-        <path className="visual-line visual-line-3" d="M160 60 L160 160" />
-      </g>
-      <g className="visual-words">
-        <rect className="visual-word" x="70" y="50" width="60" height="28" rx="6" />
-        <text className="visual-word-text" x="100" y="69" textAnchor="middle">词库</text>
-        <rect className="visual-word" x="190" y="50" width="60" height="28" rx="6" />
-        <text className="visual-word-text" x="220" y="69" textAnchor="middle">术语</text>
-        <rect className="visual-word" x="130" y="150" width="60" height="28" rx="6" />
-        <text className="visual-word-text" x="160" y="169" textAnchor="middle">人名</text>
-      </g>
-      <circle className="visual-center" cx="160" cy="110" r="18" />
-      <text className="visual-center-text" x="160" y="115" textAnchor="middle">+</text>
-    </svg>
-  )
-}
-
-function EverywhereVisual() {
-  return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M160 110 L160 50" />
-        <path className="visual-line visual-line-2" d="M160 110 L220 140" />
-        <path className="visual-line visual-line-3" d="M160 110 L100 140" />
-        <path className="visual-line visual-line-4" d="M160 110 L160 180" />
-      </g>
-      <g className="visual-apps">
-        <rect className="visual-app" x="140" y="30" width="40" height="40" rx="10" />
-        <text className="visual-app-text" x="160" y="56" textAnchor="middle">聊</text>
-        <rect className="visual-app" x="230" y="120" width="40" height="40" rx="10" />
-        <text className="visual-app-text" x="250" y="146" textAnchor="middle">邮</text>
-        <rect className="visual-app" x="50" y="120" width="40" height="40" rx="10" />
-        <text className="visual-app-text" x="70" y="146" textAnchor="middle">记</text>
-        <rect className="visual-app" x="140" y="170" width="40" height="40" rx="10" />
-        <text className="visual-app-text" x="160" y="196" textAnchor="middle">码</text>
-      </g>
-      <circle className="visual-keyboard" cx="160" cy="110" r="24" />
-      <text className="visual-keyboard-text" x="160" y="115" textAnchor="middle">⌨</text>
-    </svg>
-  )
-}
-
-function PrivacyVisual() {
-  return (
-    <svg className="feature-visual-svg" viewBox="0 0 320 220" fill="none">
-      <g className="visual-line-group">
-        <path className="visual-line visual-line-1" d="M80 140 L160 90 L240 140" />
-        <path className="visual-line visual-line-2" d="M160 90 L160 190" />
-      </g>
-      <g className="visual-shield">
-        <path className="visual-shield-shape" d="M160 50 L220 80 V130 Q220 170 160 190 Q100 170 100 130 V80 Z" />
-        <path className="visual-lock-body" d="M145 120 H175 V150 H145 Z" />
-        <path className="visual-lock-arc" d="M150 120 V110 Q150 95 160 95 Q170 95 170 110 V120" />
-      </g>
-      <text className="visual-text" x="160" y="210" textAnchor="middle">本地处理</text>
-    </svg>
-  )
-}
-
-const visuals = {
-  waveform: WaveformVisual,
-  cleanup: CleanupVisual,
-  format: FormatVisual,
-  edit: EditVisual,
-  tone: ToneVisual,
-  vocab: VocabVisual,
-  everywhere: EverywhereVisual,
-  privacy: PrivacyVisual
+const mockups = {
+  phone: PhoneMockup,
+  cleanup: CleanupMockup,
+  format: FormatMockup,
+  edit: EditMockup,
+  tone: ToneMockup,
+  vocab: VocabMockup,
+  everywhere: EverywhereMockup,
+  privacy: PrivacyMockup
 }
 
 export default function FeatureShowcase() {
   const sectionRef = useRef(null)
-  const lineRef = useRef(null)
-  const itemsRef = useRef([])
+  const bandsRef = useRef([])
   const triggersRef = useRef([])
 
   useEffect(() => {
-    const line = lineRef.current
-    if (!line) return
-
-    const length = line.getTotalLength()
-    line.style.strokeDasharray = length
-    line.style.strokeDashoffset = length
-
     const ctx = gsap.context(() => {
-      gsap.to(line, {
-        strokeDashoffset: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'bottom 60%',
-          scrub: 1
-        }
-      })
-
-      itemsRef.current.forEach((item, i) => {
-        if (!item) return
-        const visual = item.querySelector('.feature-visual')
-        const texts = item.querySelectorAll('.feature-text-line')
+      bandsRef.current.forEach((band, i) => {
+        if (!band) return
+        const visual = band.querySelector('.feature-mockup')
+        const texts = band.querySelectorAll('.feature-text-line')
+        const bubbles = band.querySelectorAll('.mockup-bubble, .mockup-list-item, .mockup-vocab-item, .mockup-device, .mockup-tone-card, .mockup-privacy-node')
+        const strikeWords = band.querySelectorAll('.mockup-line-strike')
 
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: item,
+            trigger: band,
             start: 'top 80%',
-            end: 'top 40%',
+            end: 'top 30%',
             toggleActions: 'play none none reverse'
           }
         })
 
         tl.fromTo(
           visual,
-          { opacity: 0, x: i % 2 === 0 ? 60 : -60, scale: 0.96 },
-          { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: 'power3.out' }
+          { opacity: 0, y: 50, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }
         )
           .fromTo(
             texts,
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out' },
-            '-=0.6'
+            '-=0.7'
           )
-          .fromTo(
-            item.querySelectorAll('.visual-line, .visual-bar, .visual-dot, .visual-cross, .visual-check, .visual-word, .visual-app, .visual-shield'),
-            { opacity: 0, scaleY: 0, scaleX: 0 },
-            { opacity: 1, scaleY: 1, scaleX: 1, duration: 0.5, stagger: 0.04, ease: 'back.out(1.7)' },
-            '-=0.5'
+
+        if (bubbles.length) {
+          tl.fromTo(
+            bubbles,
+            { opacity: 0, y: 20, scale: 0.95 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)' },
+            '-=0.4'
           )
+        }
+
+        if (strikeWords.length) {
+          tl.fromTo(
+            strikeWords,
+            { opacity: 1 },
+            { opacity: 0.25, duration: 0.8, ease: 'power2.out' },
+            '-=0.2'
+          )
+        }
 
         triggersRef.current.push(tl.scrollTrigger)
       })
@@ -319,8 +383,8 @@ export default function FeatureShowcase() {
 
   return (
     <section className="feature-showcase" id="features" ref={sectionRef}>
-      <div className="container">
-        <div className="feature-showcase-header">
+      <div className="feature-showcase-header">
+        <div className="container-wide">
           <Reveal variant="fade">
             <span className="section-kicker">Capabilities</span>
           </Reveal>
@@ -333,36 +397,34 @@ export default function FeatureShowcase() {
             </p>
           </Reveal>
         </div>
+      </div>
 
-        <svg className="feature-timeline" viewBox="0 0 2 1600" preserveAspectRatio="none">
-          <line ref={lineRef} x1="1" y1="0" x2="1" y2="1600" />
-        </svg>
-
-        <div className="feature-items">
-          {features.map((f, i) => {
-            const Visual = visuals[f.visual]
-            return (
-              <div
-                key={f.id}
-                className={`feature-item ${i % 2 === 0 ? 'feature-item-left' : 'feature-item-right'}`}
-                ref={(el) => (itemsRef.current[i] = el)}
-              >
-                <div className="feature-content">
+      <div className="feature-bands">
+        {features.map((f, i) => {
+          const Mockup = mockups[f.mockup]
+          const isEven = i % 2 === 0
+          return (
+            <div
+              key={f.id}
+              className={`feature-band ${isEven ? 'feature-band-left' : 'feature-band-right'}`}
+              ref={(el) => (bandsRef.current[i] = el)}
+            >
+              <div className="feature-band-inner">
+                <div className="feature-band-content">
                   <span className="feature-text-line feature-label">{f.label}</span>
                   <span className="feature-text-line feature-en">{f.en}</span>
                   <h3 className="feature-text-line feature-title">{f.title}</h3>
                   <p className="feature-text-line feature-desc">{f.desc}</p>
                 </div>
-                <div className="feature-visual">
-                  <div className="feature-visual-frame">
-                    <Visual />
+                <div className="feature-mockup">
+                  <div className="feature-mockup-frame">
+                    <Mockup />
                   </div>
-                  <div className="feature-connector" />
                 </div>
               </div>
-            )
-          })}
-        </div>
+            </div>
+          )
+        })}
       </div>
     </section>
   )
