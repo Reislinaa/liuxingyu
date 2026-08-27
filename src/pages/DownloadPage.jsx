@@ -1,4 +1,12 @@
+import { siApple, siIos, siAndroid } from 'simple-icons'
 import Reveal from '../components/Reveal'
+
+// simple-icons 移除了 Windows 官方图标（v16 商标下架），这里保留 Windows 官方
+// 四格旗的规范路径，与其他来自 simple-icons 的真实品牌图标保持一致。
+const windowsIcon = {
+  title: 'Windows',
+  path: 'M2 4.5l8.5-1.1V11H2V4.5zM11.5 3.3L22 2v8.8h-10.5V3.3zM2 12.5h8.5v7.6L2 19V12.5zM11.5 12.5H22V22l-10.5-1.1V12.5z'
+}
 
 const platforms = [
   {
@@ -7,11 +15,7 @@ const platforms = [
     desc: 'iPhone / iPad 用户',
     version: '2.1.0',
     btn: '从 App Store 下载',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.8 8.3c-.1-1.7 1.1-3.1 2.6-3.8-.7-1-1.8-1.6-3-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.6 0-3.1 1-3.9 2.5-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.6-.9.9-1.8 1-1.9-.1 0-1.9-.7-1.9-2.9-.1-1.8 1.5-2.7 1.6-2.8-.9-1.3-2.2-1.4-2.7-1.5-1.3-.1-2.4.7-3 .7zM15.4 4.6c.7-.8 1.1-1.9.9-3-1 .1-2.1.6-2.8 1.5-.6.7-1.1 1.8-.9 2.9 1.1.1 2.1-.5 2.8-1.4z" />
-      </svg>
-    )
+    icon: siIos
   },
   {
     platform: 'Android',
@@ -19,11 +23,7 @@ const platforms = [
     desc: 'Android 手机用户',
     version: '2.1.0',
     btn: '下载 Android 版',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.6 9.2c0-.5-.1-1-.2-1.4l2.5-2.1c.2-.2.2-.5 0-.7l-.2-.3c-.2-.2-.5-.2-.7 0l-2.6 2.2c-.9-.7-2.1-1.1-3.4-1.1s-2.5.4-3.4 1.1L7 4.7c-.2-.2-.5-.2-.7 0l-.2.3c-.2.2-.2.5 0 .7l2.5 2.1c-.1.5-.2 1-.2 1.4 0 2.6 1.7 4.8 4 5.6v3.2H9.5c-.3 0-.5.2-.5.5v.5c0 .3.2.5.5.5h5c.3 0 .5-.2.5-.5v-.5c0-.3-.2-.5-.5-.5H13.6v-3.2c2.3-.8 4-3 4-5.6zM8.8 11c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm6.4 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" />
-      </svg>
-    )
+    icon: siAndroid
   },
   {
     platform: 'Windows',
@@ -31,11 +31,7 @@ const platforms = [
     desc: 'Windows 10 / 11',
     version: '2.1.0',
     btn: '下载 Windows 版',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M2 4.5l8.5-1.1V11H2V4.5zM11.5 3.3L22 2v8.8h-10.5V3.3zM2 12.5h8.5v7.6L2 19V12.5zM11.5 12.5H22V22l-10.5-1.1V12.5z" />
-      </svg>
-    )
+    icon: windowsIcon
   },
   {
     platform: 'macOS',
@@ -43,11 +39,7 @@ const platforms = [
     desc: 'macOS 12 及以上',
     version: '2.1.0',
     btn: '下载 macOS 版',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.8 8.3c-.1-1.7 1.1-3.1 2.6-3.8-.7-1-1.8-1.6-3-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.6 0-3.1 1-3.9 2.5-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.6-.9.9-1.8 1-1.9-.1 0-1.9-.7-1.9-2.9-.1-1.8 1.5-2.7 1.6-2.8-.9-1.3-2.2-1.4-2.7-1.5-1.3-.1-2.4.7-3 .7zM15.4 4.6c.7-.8 1.1-1.9.9-3-1 .1-2.1.6-2.8 1.5-.6.7-1.1 1.8-.9 2.9 1.1.1 2.1-.5 2.8-1.4z" />
-      </svg>
-    )
+    icon: siApple
   }
 ]
 
@@ -57,6 +49,17 @@ const questions = [
   { q: '如何更新到最新版？', a: '在应用内设置中检查更新即可，会第一时间推送。' },
   { q: '下载遇到问题怎么办？', a: '可以联系我们的客服邮箱 support@liuxingyu.cn。' }
 ]
+
+// 使用 simple-icons 的真实品牌 path，fill 用 currentColor 以沿用站点统一的
+// 珊瑚流星主色（--primary），避免多色品牌色破坏温暖极简的设计系统。
+function PlatformIcon({ icon }) {
+  if (!icon) return null
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d={icon.path} />
+    </svg>
+  )
+}
 
 export default function DownloadPage() {
   return (
@@ -85,7 +88,7 @@ export default function DownloadPage() {
               <Reveal key={app.platform} delay={(i % 2) + 1} variant={['up', 'scale', 'left', 'right'][i % 4]}>
                 <div className="download-platform-card">
                   <div className="download-platform-icon">
-                    {app.icon}
+                    <PlatformIcon icon={app.icon} />
                   </div>
                   <div className="download-platform-info">
                     <h3>{app.platform}</h3>

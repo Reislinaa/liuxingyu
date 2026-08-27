@@ -1,6 +1,6 @@
 // 手动部署 dist/ 到 GitHub Pages (gh-pages 分支)
 // 用法: node scripts/deploy-gh-pages.mjs <github用户名> <仓库名>
-// 例: node scripts/deploy-gh-pages.mjs Reislinaa luixingyu
+// 例: node scripts/deploy-gh-pages.mjs Reislinaa liuxingyu
 
 import { execSync } from 'child_process'
 import { existsSync, rmSync, mkdirSync, readdirSync, copyFileSync } from 'fs'

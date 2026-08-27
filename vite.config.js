@@ -1,9 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// GitHub Pages 子路径: 通过环境变量 VITE_BASE 设置
-// 例如: VITE_BASE=/liuxingyu/  → 部署在 https://xxx.github.io/liuxingyu/
-// 默认根路径（用于自定义域名或本地预览）
 const base = process.env.VITE_BASE || './'
 
 export default defineConfig({
@@ -20,6 +17,16 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    cssCodeSplit: true,
+    assetsInlineLimit: 4096,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'gsap-vendor': ['gsap'],
+        }
+      }
+    }
   }
 })

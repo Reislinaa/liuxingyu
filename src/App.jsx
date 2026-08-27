@@ -3,9 +3,10 @@ import './App.css'
 import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import FeatureShowcase from './components/FeatureShowcase'
-import Showcase from './components/Showcase'
+import StepsSection from './components/StepsSection'
 import MindSection from './components/MindSection'
+import FeatureShowcase from './components/FeatureShowcase'
+import EverywhereSection from './components/EverywhereSection'
 import PlatformSection from './components/PlatformSection'
 import Footer from './components/Footer'
 import AuthModal from './components/AuthModal'
@@ -20,9 +21,10 @@ function Home({ onStartDemo }) {
     <>
       <PageGlow />
       <Hero onNavigate={onStartDemo} />
+      <StepsSection />
       <MindSection />
       <FeatureShowcase />
-      <Showcase />
+      <EverywhereSection />
       <PlatformSection onNavigate={onStartDemo} />
     </>
   )

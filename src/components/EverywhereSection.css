@@ -1,0 +1,142 @@
+/* ============ 全场景通用：双层反向旋转图标圆环 ============ */
+.everywhere {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/*
+  容器：宽 100%，高 = 外环半径（aspect 100/38 → 高 = 宽 * 0.38）。
+  圆心位于底部正中，overflow:hidden 仅露出上半弧。
+*/
+.everywhere-rings {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 100 / 38;
+  margin: 8px 0 0;
+  overflow: hidden;
+}
+
+/* 两层圆环：铺满容器，仅作分组与层级 */
+.ev-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 图标卡片：白色圆角、轻阴影；transform 由 rAF 直接写入，不进 React style */
+.ev-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow:
+    0 6px 16px rgba(28, 28, 30, 0.10),
+    0 2px 5px rgba(28, 28, 30, 0.05);
+  will-change: transform;
+}
+
+/* 内环卡片略小，形成层级并降低拥挤感 */
+.ev-icon--inner {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.ev-icon svg {
+  width: 58%;
+  height: 58%;
+  display: block;
+}
+
+/* 渐隐遮罩：图标进出视口时柔化淡入淡出 */
+.ev-fade {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 左侧渐隐（图标弧线左端淡出） */
+.ev-fade-left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 22%;
+  background: linear-gradient(to right, var(--bg) 0%, var(--bg) 40%, transparent 100%);
+}
+
+/* 右侧渐隐（图标弧线右端淡出） */
+.ev-fade-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 22%;
+  background: linear-gradient(to left, var(--bg) 0%, var(--bg) 40%, transparent 100%);
+}
+
+/* 顶部渐隐：图标在此离开/进入（内外环方向相反） */
+.ev-fade-top {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 14%;
+  background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+}
+
+/* ============ 响应式 ============ */
+@media (max-width: 768px) {
+  .ev-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+  .ev-icon--inner {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+  }
+  .ev-icon svg {
+    width: 60%;
+    height: 60%;
+  }
+  .ev-fade-left,
+  .ev-fade-right {
+    width: 18%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ev-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+  .ev-icon--inner {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+  }
+  .ev-icon svg {
+    width: 62%;
+    height: 62%;
+  }
+  .ev-fade-left,
+  .ev-fade-right {
+    width: 15%;
+  }
+}
+
+/* 尊重系统「减少动效」：停用 will-change，旋转由 JS 层面跳过 */
+@media (prefers-reduced-motion: reduce) {
+  .ev-icon {
+    will-change: auto;
+  }
+}

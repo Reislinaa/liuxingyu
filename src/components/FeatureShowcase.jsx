@@ -56,16 +56,8 @@ const features = [
     mockup: 'vocab'
   },
   {
-    id: 'everywhere',
-    label: '07',
-    en: 'Works Everywhere',
-    title: '全场景通用',
-    desc: '在微信、飞书、邮件、笔记、代码编辑器甚至浏览器表单中都能使用，不挑应用。',
-    mockup: 'everywhere'
-  },
-  {
     id: 'privacy',
-    label: '08',
+    label: '07',
     en: 'Privacy First',
     title: '隐私优先',
     desc: '语音与文本优先在本地处理，敏感内容无需上传云端，你的表达只属于你。',
@@ -75,40 +67,46 @@ const features = [
 
 function PhoneMockup() {
   return (
-    <div className="mockup-phone mockup-phone-demo">
-      <div className="mockup-phone-notch" />
-      <div className="mockup-phone-screen">
-        <div className="mockup-chat-header">
-          <div className="mockup-avatar">A</div>
-          <div>
-            <div className="mockup-chat-name">阿明</div>
-            <div className="mockup-chat-status">在线</div>
-          </div>
-        </div>
-        <div className="mockup-chat-body">
-          <div className="mockup-bubble mockup-bubble-them mockup-bubble-1">
-            晚上吃饭吗？
-          </div>
-          <div className="mockup-bubble mockup-bubble-me mockup-bubble-voice mockup-bubble-2">
-            <div className="mockup-voice-wave">
-              {[...Array(12)].map((_, i) => (
-                <span key={i} className="mockup-wave-bar" style={{ '--i': i }} />
-              ))}
+    <div className="mockup-phone-wrap mockup-phone-demo">
+      <div className="mockup-phone-frame">
+        <div className="mockup-phone-btn mockup-phone-btn-action" />
+        <div className="mockup-phone-btn mockup-phone-btn-vol-up" />
+        <div className="mockup-phone-btn mockup-phone-btn-vol-down" />
+        <div className="mockup-phone-btn mockup-phone-btn-power" />
+        <div className="mockup-phone-screen">
+          <div className="mockup-phone-island" />
+          <div className="mockup-chat-header">
+            <div className="mockup-avatar">A</div>
+            <div>
+              <div className="mockup-chat-name">阿明</div>
+              <div className="mockup-chat-status">在线</div>
             </div>
-            <span className="mockup-voice-time">0:08</span>
           </div>
-          <div className="mockup-bubble mockup-bubble-me mockup-bubble-3">
-            <span className="mockup-typewriter">好啊，想去那家新开的日料，七点可以吗？</span>
+          <div className="mockup-chat-body">
+            <div className="mockup-bubble mockup-bubble-them mockup-bubble-1">
+              晚上吃饭吗？
+            </div>
+            <div className="mockup-bubble mockup-bubble-me mockup-bubble-voice mockup-bubble-2">
+              <div className="mockup-voice-wave">
+                {[...Array(12)].map((_, i) => (
+                  <span key={i} className="mockup-wave-bar" style={{ '--i': i }} />
+                ))}
+              </div>
+              <span className="mockup-voice-time">0:03</span>
+            </div>
+            <div className="mockup-bubble mockup-bubble-me mockup-bubble-3">
+              <span className="mockup-typewriter">好啊，想去那家新开的日料，七点可以吗？</span>
+            </div>
           </div>
-        </div>
-        <div className="mockup-chat-input">
-          <div className="mockup-input-orb">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-            </svg>
+          <div className="mockup-chat-input">
+            <div className="mockup-input-orb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              </svg>
+            </div>
+            <div className="mockup-input-text">按住说话</div>
           </div>
-          <div className="mockup-input-text">按住说话</div>
         </div>
       </div>
 
@@ -245,11 +243,11 @@ function ToneMockup() {
       <div className="mockup-tone-chat">
         <div className="mockup-tone-bubble mockup-tone-bubble-them">
           <span className="mockup-tone-label">原始表达</span>
-          <p className="mockup-tone-text">方案我看了，还可以，再改改吧。</p>
+          <p className="mockup-tone-text mockup-tone-raw">方案我看了，还可以，再改改吧。</p>
         </div>
         <div className="mockup-tone-bubble mockup-tone-bubble-me">
           <span className="mockup-tone-label">{current.label}版</span>
-          <p className="mockup-tone-text" key={active}>{current.text}</p>
+          <p className="mockup-tone-text mockup-tone-polished" key={active}>{current.text}</p>
         </div>
       </div>
     </div>
@@ -293,26 +291,64 @@ function VocabMockup() {
   )
 }
 
+const APP_ICONS = {
+  chat: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+    </svg>
+  ),
+  mail: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+    </svg>
+  ),
+  notes: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4" />
+      <path d="M2 6h4" />
+      <path d="M2 10h4" />
+      <path d="M2 14h4" />
+      <path d="M2 18h4" />
+      <path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+    </svg>
+  ),
+  code: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m16 18 6-6-6-6" />
+      <path d="m8 6-6 6 6 6" />
+    </svg>
+  ),
+  table: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v18" />
+      <rect width="18" height="18" x="3" y="3" rx="2" />
+      <path d="M3 9h18" />
+      <path d="M3 15h18" />
+    </svg>
+  )
+}
+
 function EverywhereMockup() {
   return (
     <div className="mockup-devices">
       <div className="mockup-device mockup-device-phone">
         <div className="mockup-device-screen">
-          <div className="mockup-device-app">聊</div>
+          <div className="mockup-device-app">{APP_ICONS.chat}</div>
         </div>
       </div>
       <div className="mockup-device mockup-device-laptop">
         <div className="mockup-device-screen-lg">
           <div className="mockup-device-row">
-            <div className="mockup-device-app">邮</div>
-            <div className="mockup-device-app">记</div>
-            <div className="mockup-device-app">码</div>
+            <div className="mockup-device-app">{APP_ICONS.mail}</div>
+            <div className="mockup-device-app">{APP_ICONS.notes}</div>
+            <div className="mockup-device-app">{APP_ICONS.code}</div>
           </div>
         </div>
       </div>
       <div className="mockup-device mockup-device-tablet">
         <div className="mockup-device-screen">
-          <div className="mockup-device-app">表</div>
+          <div className="mockup-device-app">{APP_ICONS.table}</div>
         </div>
       </div>
     </div>
@@ -379,7 +415,6 @@ const mockups = {
   edit: EditMockup,
   tone: ToneMockup,
   vocab: VocabMockup,
-  everywhere: EverywhereMockup,
   privacy: PrivacyMockup
 }
 
@@ -431,7 +466,7 @@ export default function FeatureShowcase() {
           tl.fromTo(
             strikeWords,
             { opacity: 1 },
-            { opacity: 0.25, duration: 0.8, ease: 'power2.out' },
+            { opacity: 0.75, duration: 0.8, ease: 'power2.out' },
             '-=0.2'
           )
         }

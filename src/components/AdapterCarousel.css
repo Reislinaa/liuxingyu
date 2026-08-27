@@ -2,118 +2,121 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 48px;
   padding: 24px 0;
 }
 
-.adapter-wheel-wrap {
-  position: relative;
-  width: 320px;
-  height: 320px;
-  margin: 0 auto;
-}
-
-.adapter-wheel {
-  position: absolute;
-  inset: 0;
-}
-
-.adapter-item {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 0 -32px;
+.adapter-grid {
   display: grid;
-  place-items: center;
-  border-radius: 18px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 880px;
+}
+
+.adapter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 12px;
   background: var(--surface);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  will-change: transform, opacity;
+  border-radius: 16px;
+  transition: all 0.3s var(--ease-out);
 }
 
-.adapter-item-icon {
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
+.adapter-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 8px 24px rgba(28, 28, 30, 0.06);
+  transform: translateY(-2px);
+}
+
+.adapter-card-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--primary);
 }
 
-.adapter-item-icon svg {
+.adapter-card-icon svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.adapter-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--grad-brand);
-  color: #fff;
-  box-shadow: 0 12px 32px rgba(232, 93, 78, 0.28);
-}
-
-.adapter-center-label {
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-}
-
-.adapter-controls {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  max-width: 480px;
-  width: 100%;
-}
-
-.adapter-nav {
-  flex: 0 0 auto;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
-  color: var(--text);
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.25s var(--ease-out);
-}
-
-.adapter-nav:hover {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-}
-
-.adapter-info {
-  flex: 1;
-  text-align: center;
-}
-
-.adapter-info-tag {
-  font-size: 0.72rem;
+.adapter-card-name {
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: 6px;
+  color: var(--text);
 }
 
-.adapter-info-desc {
-  font-size: 0.95rem;
+.adapter-card-tag {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+.adapter-descriptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 40px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.adapter-desc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.adapter-desc-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.adapter-desc-text {
+  font-size: 0.88rem;
   color: var(--text-2);
   line-height: 1.6;
-  margin: 0;
-  min-height: 46px;
+}
+
+@media (max-width: 768px) {
+  .adapter-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .adapter-descriptions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .adapter-card {
+    padding: 16px 8px;
+  }
+
+  .adapter-card-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .adapter-card-name {
+    font-size: 0.78rem;
+  }
+
+  .adapter-card-tag {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .adapter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

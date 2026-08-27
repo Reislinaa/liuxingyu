@@ -1,4 +1,6 @@
 .mind-section {
+  position: relative;
+  overflow: visible;
   background: var(--bg-2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);

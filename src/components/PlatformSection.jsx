@@ -15,7 +15,7 @@ export default function PlatformSection({ onNavigate }) {
         </Reveal>
         <Reveal delay={1} variant="fade">
           <p className="section-subtitle">
-            转动转盘，看看流星语在你熟悉的每个平台上如何工作
+            流星语在你熟悉的每个平台上都能使用，不挑应用
           </p>
         </Reveal>
 

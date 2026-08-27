@@ -1,8 +1,28 @@
+/* ============ Design system tokens ============ */
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --border: rgba(0, 0, 0, 0.06);
+  --border-strong: rgba(0, 0, 0, 0.1);
+  --primary: #E85D4E;
+  --secondary: #0F766E;
+  --gold: #D97706;
+  --text: #1A1A1A;
+  --text-2: #4A4A4A;
+  --text-light: #8A8A8A;
+  --grad-brand: linear-gradient(135deg, #E85D4E, #F59E0B);
+  --radius-lg: 20px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --font: 'Bricolage Grotesque', 'Noto Sans SC', sans-serif;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ============ Hero section ============ */
 .hero {
-  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
   overflow: hidden;
   background:
     radial-gradient(900px 500px at 80% -10%, rgba(232, 93, 78, 0.06), transparent 60%),
@@ -29,15 +49,37 @@
   100% { opacity: 1; transform: translate3d(-3%, 2%, 0); }
 }
 
+/* ============ Wide two-column grid ============ */
 .hero-content {
   position: relative;
   z-index: 3;
-  text-align: center;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 0 clamp(24px, 4vw, 48px);
 }
 
+/* Left column: text + actions + compare, left-aligned */
+.hero-col-left {
+  text-align: left;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Right column: mockup centered */
+.hero-col-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============ Hero text elements ============ */
 .hero-tag {
   display: inline-block;
   font-size: 0.82rem;
@@ -54,6 +96,7 @@
 
 .hero-title {
   margin: 0 0 32px;
+  text-align: left;
 }
 
 .hero-line {
@@ -77,23 +120,20 @@
   font-size: 1.18rem;
   color: var(--text-2);
   max-width: 580px;
-  margin: 0 auto 44px;
+  margin: 0 0 44px;
   line-height: 1.75;
+  margin-left: 0;
 }
 
 .hero-actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 72px;
+  margin-bottom: 48px;
 }
 
-.hero-content .mockups {
-  margin-bottom: 72px;
-}
-
-/* typeless 式对比模块 */
+/* ============ Speed comparison (left-aligned) ============ */
 .hero-compare {
   display: inline-flex;
   align-items: center;
@@ -179,27 +219,78 @@
   50% { transform: translateX(6px); opacity: 1; }
 }
 
+/* ============ Responsive ============ */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    text-align: center;
+  }
+
+  .hero-col-left {
+    text-align: center;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .hero-col-right {
+    order: -1; /* mockup moves above the text on tablet */
+  }
+
+  .hero-tag {
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-compare {
+    /* keep inline-flex so it stays a tidy pill, but centered via parent */
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
     padding: 80px 0 64px;
   }
-  .hero-tag {
-    margin-bottom: 32px;
+
+  .hero-col-right {
+    order: 0; /* let it flow naturally below on small phones */
   }
+
+  .hero-tag {
+    margin-bottom: 28px;
+  }
+
   .hero-subtitle {
     font-size: 1rem;
+    margin-bottom: 36px;
   }
+
   .hero-actions {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
+
   .hero-compare {
     gap: 20px;
     padding: 18px 24px;
   }
+
   .compare-item {
     min-width: 100px;
   }
+
   .compare-num {
     font-size: 2rem;
   }

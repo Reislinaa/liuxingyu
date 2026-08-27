@@ -1,5 +1,7 @@
 .mind {
   text-align: center;
+  position: relative;
+  padding-bottom: 40px;
 }
 
 .mind-svg {
@@ -7,54 +9,31 @@
   max-width: 600px;
   height: auto;
   margin: 0 auto;
+  display: block;
   overflow: visible;
-}
-
-.mind-line {
-  stroke: var(--primary);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  opacity: 0.45;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-}
-
-.mind-core {
-  fill: var(--primary);
-  opacity: 0;
-  animation: mindCoreIn 0.6s ease forwards;
-}
-
-.mind-dot {
-  opacity: 0;
-  will-change: opacity, transform;
-}
-
-.mind-dot-ring {
-  fill: none;
-  stroke: var(--primary);
-  stroke-width: 1;
-  opacity: 0.3;
-}
-
-.mind-dot-fill {
-  fill: var(--primary);
+  position: relative;
+  z-index: 1;
 }
 
 .mind-dot-text {
-  font-size: 13px;
-  fill: var(--text-2);
-  font-weight: 500;
+  font-size: 16px;
+  fill: var(--text);
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .mind-sentence {
-  font-size: clamp(1.3rem, 2.6vw, 1.65rem);
-  font-weight: 600;
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
-  margin-top: 36px;
+  margin-top: 48px;
   line-height: 1.5;
+  position: relative;
+  z-index: 2;
+  background: var(--bg-2);
+  display: inline-block;
+  padding: 0 16px;
 }
 
 .mind-char {
@@ -63,6 +42,30 @@
   opacity: 0;
 }
 
-@keyframes mindCoreIn {
-  to { opacity: 1; }
+/* Cross-section vertical line - extends from SVG through FeatureShowcase */
+.mind-extend-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: calc(100% + 80vh);
+  background: var(--primary);
+  opacity: 0.25;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0%,
+    transparent 15%,
+    black 20%,
+    black 40%,
+    transparent 50%
+  );
+  mask-image: linear-gradient(to bottom,
+    transparent 0%,
+    transparent 15%,
+    black 20%,
+    black 40%,
+    transparent 50%
+  );
 }
