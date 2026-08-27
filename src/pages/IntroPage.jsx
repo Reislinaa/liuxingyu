@@ -1,77 +1,74 @@
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Reveal from '../components/Reveal'
 
-const highlights = [
+gsap.registerPlugin(ScrollTrigger)
+
+const scenarios = [
   {
+    title: '微信聊天',
+    desc: '双手不方便时，按住语音键直接说，秒出文字发送。',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    )
+  },
+  {
+    title: '工作汇报',
+    desc: '零散想法自动整理成结构清晰的日报、周报。',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+      </svg>
+    )
+  },
+  {
+    title: '会议记录',
+    desc: '边说边记，关键内容实时转写，会后直接导出。',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z" />
         <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
         <line x1="12" y1="19" x2="12" y2="22" />
       </svg>
-    ),
-    title: '语音转写',
-    desc: '随口说，自动整理成干净文字。去除口癖、重复与自我纠正，只保留最终表达。'
+    )
   },
   {
+    title: '邮件起草',
+    desc: '口语化表达一键转为正式、得体的商务邮件。',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m9 18 6-6-6-6" />
-        <path d="m15 18 6-6-6-6" />
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
       </svg>
-    ),
-    title: '智能补全',
-    desc: '理解上下文与语气，未写完的句子已为你续上，表达快人一步。'
+    )
   },
   {
+    title: '代码注释',
+    desc: '在 IDE 中口述注释与 Commit 信息，保持心流。',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 20h9" />
-        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z" />
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
       </svg>
-    ),
-    title: '自动润色',
-    desc: '一句口语，自动整理成得体邮件、汇报或文案，张嘴即得成品。'
+    )
   },
   {
+    title: '多语言沟通',
+    desc: '中英文混合输入，自动识别并给出准确结果。',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
-        <path d="M12 6v6l4 2" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
-    ),
-    title: '实时翻译',
-    desc: '边说边译，支持多种语言即时转写，跨语言沟通不再切换应用。'
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-      </svg>
-    ),
-    title: '隐私优先',
-    desc: '本地优先处理，敏感内容不上云，输入这件事只属于你自己。'
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
-    title: '跨端同步',
-    desc: '手机、电脑、网页输入习惯与词库无缝同步，处处如一。'
+    )
   }
-]
-
-const scenarios = [
-  { title: '微信聊天', desc: '双手不方便时，按住语音键直接说，秒出文字发送。' },
-  { title: '工作汇报', desc: '零散想法自动整理成结构清晰的日报、周报。' },
-  { title: '会议记录', desc: '边说边记，关键内容实时转写，会后直接导出。' },
-  { title: '邮件起草', desc: '口语化表达一键转为正式、得体的商务邮件。' },
-  { title: '代码注释', desc: '在 IDE 中口述注释与 Commit 信息，保持心流。' },
-  { title: '多语言沟通', desc: '中英文混合输入，自动识别并给出准确结果。' }
 ]
 
 const steps = [
@@ -82,6 +79,37 @@ const steps = [
 ]
 
 export default function IntroPage({ onNavigate }) {
+  const sectionRef = useRef(null)
+  const lineRef = useRef(null)
+  const triggersRef = useRef([])
+
+  useEffect(() => {
+    const line = lineRef.current
+    if (!line) return
+    const length = line.getTotalLength()
+    line.style.strokeDasharray = length
+    line.style.strokeDashoffset = length
+
+    const ctx = gsap.context(() => {
+      const st = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top 70%',
+        end: 'bottom 60%',
+        scrub: 1,
+        onUpdate: (self) => {
+          line.style.strokeDashoffset = length * (1 - self.progress)
+        }
+      })
+      triggersRef.current.push(st)
+    }, sectionRef)
+
+    return () => {
+      triggersRef.current.forEach((st) => st.kill())
+      triggersRef.current = []
+      ctx.revert()
+    }
+  }, [])
+
   return (
     <div className="page">
       <div className="page-hero">
@@ -97,32 +125,6 @@ export default function IntroPage({ onNavigate }) {
       <div className="page-section">
         <div className="container">
           <Reveal variant="fade">
-            <span className="section-kicker">Core capabilities</span>
-          </Reveal>
-          <Reveal variant="blur">
-            <h2 className="page-title">核心能力</h2>
-          </Reveal>
-          <Reveal delay={1} variant="fade">
-            <p className="page-subtitle">不只是语音识别，更是懂你的输入助手</p>
-          </Reveal>
-
-          <div className="highlights-grid">
-            {highlights.map((h, i) => (
-              <Reveal key={h.title} delay={(i % 3) + 1} variant={['up', 'scale', 'blur'][i % 3]}>
-                <div className="highlight-card">
-                  <div className="highlight-icon">{h.icon}</div>
-                  <h3 className="highlight-title">{h.title}</h3>
-                  <p className="highlight-desc">{h.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="page-section page-section-alt">
-        <div className="container">
-          <Reveal variant="fade">
             <span className="section-kicker">Use cases</span>
           </Reveal>
           <Reveal variant="blur">
@@ -136,6 +138,7 @@ export default function IntroPage({ onNavigate }) {
             {scenarios.map((s, i) => (
               <Reveal key={s.title} delay={(i % 3) + 1} variant={['up', 'scale', 'blur'][i % 3]}>
                 <div className="scenario-card">
+                  <div className="scenario-icon">{s.icon}</div>
                   <h3 className="scenario-title">{s.title}</h3>
                   <p className="scenario-desc">{s.desc}</p>
                 </div>
@@ -145,8 +148,12 @@ export default function IntroPage({ onNavigate }) {
         </div>
       </div>
 
-      <div className="page-section">
+      <div className="page-section page-section-alt" ref={sectionRef}>
         <div className="container">
+          <svg className="scenario-timeline" viewBox="0 0 2 600" preserveAspectRatio="none">
+            <line ref={lineRef} x1="1" y1="0" x2="1" y2="600" />
+          </svg>
+
           <Reveal variant="fade">
             <span className="section-kicker">Get started</span>
           </Reveal>
@@ -171,7 +178,7 @@ export default function IntroPage({ onNavigate }) {
         </div>
       </div>
 
-      <div className="page-section page-section-alt">
+      <div className="page-section">
         <div className="container">
           <Reveal variant="scale">
             <div className="cta-banner">

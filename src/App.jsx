@@ -3,7 +3,7 @@ import './App.css'
 import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Features from './components/Features'
+import FeatureShowcase from './components/FeatureShowcase'
 import Showcase from './components/Showcase'
 import MindSection from './components/MindSection'
 import PlatformSection from './components/PlatformSection'
@@ -21,7 +21,7 @@ function Home({ onStartDemo }) {
       <PageGlow />
       <Hero onNavigate={onStartDemo} />
       <MindSection />
-      <Features />
+      <FeatureShowcase />
       <Showcase />
       <PlatformSection onNavigate={onStartDemo} />
     </>

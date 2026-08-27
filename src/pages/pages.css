@@ -68,6 +68,7 @@
   background: var(--bg-2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  position: relative;
 }
 
 .page-title {
@@ -177,6 +178,41 @@
 
 .scenario-card:hover::before {
   opacity: 1;
+}
+
+.scenario-icon {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  background: rgba(232, 93, 78, 0.08);
+  border: 1px solid rgba(232, 93, 78, 0.14);
+  border-radius: 12px;
+}
+
+.scenario-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.scenario-timeline {
+  position: absolute;
+  left: 50%;
+  top: 160px;
+  width: 2px;
+  height: 300px;
+  transform: translateX(-50%);
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.scenario-timeline line {
+  stroke: var(--primary);
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
 .scenario-title {
