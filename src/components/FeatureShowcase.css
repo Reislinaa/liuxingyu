@@ -654,7 +654,15 @@
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-light);
-  cursor: default;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  transition: all 0.25s var(--ease-out);
+}
+
+.mockup-tone-tab:hover {
+  color: var(--text);
 }
 
 .mockup-tone-tab.mockup-tone-active {
@@ -663,31 +671,48 @@
   box-shadow: 0 2px 8px rgba(28, 28, 30, 0.06);
 }
 
-.mockup-tone-card {
-  padding: 18px 20px;
-  border-radius: 14px;
-  background: var(--bg-2);
-  margin-bottom: 12px;
-  opacity: 0.55;
+.mockup-tone-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.mockup-tone-card-active {
-  background: rgba(232, 93, 78, 0.06);
-  border: 1px solid rgba(232, 93, 78, 0.18);
-  opacity: 1;
-}
-
-.mockup-tone-label {
-  font-size: 0.75rem;
-  color: var(--text-light);
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
-}
-
-.mockup-tone-text {
+.mockup-tone-bubble {
+  max-width: 86%;
+  padding: 14px 16px;
+  border-radius: 18px;
   font-size: 0.95rem;
+  line-height: 1.6;
+  animation: bubble-in 0.45s var(--ease-out) forwards;
+}
+
+.mockup-tone-bubble-them {
+  align-self: flex-start;
+  background: var(--surface-2);
   color: var(--text);
-  line-height: 1.7;
+  border-bottom-left-radius: 4px;
+}
+
+.mockup-tone-bubble-me {
+  align-self: flex-end;
+  background: var(--grad-brand);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.mockup-tone-bubble .mockup-tone-label {
+  font-size: 0.7rem;
+  color: currentColor;
+  opacity: 0.7;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.mockup-tone-bubble .mockup-tone-text {
+  font-size: 0.95rem;
+  color: currentColor;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -696,75 +721,89 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
-  padding: 24px;
+  padding: 22px;
   box-shadow: 0 20px 50px rgba(28, 28, 30, 0.08);
+}
+
+.mockup-vocab-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .mockup-vocab-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
 }
 
 .mockup-vocab-title {
   font-weight: 600;
   color: var(--text);
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .mockup-vocab-count {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-light);
   background: var(--bg-2);
   padding: 4px 10px;
   border-radius: 99px;
 }
 
-.mockup-vocab-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.mockup-vocab-bubble {
+  align-self: flex-end;
+  max-width: 92%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border-bottom-right-radius: 4px;
+  background: var(--grad-brand);
+  color: #fff;
+  animation: bubble-in 0.5s var(--ease-out) forwards;
 }
 
-.mockup-vocab-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--bg-2);
-  border-radius: 12px;
+.mockup-vocab-label {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.mockup-vocab-text {
   font-size: 0.95rem;
-  color: var(--text);
+  line-height: 1.65;
+  margin: 0;
 }
 
-.mockup-vocab-delete {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: none;
-  background: var(--surface-3);
-  color: var(--text-light);
-  font-size: 1rem;
-  line-height: 1;
-  cursor: default;
+.mockup-vocab-highlight {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-weight: 600;
 }
 
-.mockup-vocab-add {
-  margin-top: 14px;
-  padding: 12px;
-  border: 1px dashed var(--border-strong);
-  border-radius: 12px;
-  text-align: center;
-  color: var(--primary);
-  font-size: 0.9rem;
-  font-weight: 500;
+.mockup-vocab-words {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mockup-vocab-chip {
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 99px;
+}
+
+.mockup-vocab-chip-add {
+  color: var(--primary);
+  border-style: dashed;
+  background: transparent;
 }
 
 /* ============ 全场景通用模拟 ============ */

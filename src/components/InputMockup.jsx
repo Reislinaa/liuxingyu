@@ -1,8 +1,8 @@
 import './InputMockup.css'
 
 // 产品界面 mockup：展示语音输入如何变成干净文字
-const RAW = '呃... 就是那个，本周的周报我想写一下，嗯，关于新功能上线的部分，啊，你懂的。'
-const POLISHED = '本周周报：新功能已正式上线，整体运行稳定，用户反馈积极。'
+const RAW = '呃... 就是那个，晚上吃饭吗？我想去那家新开的日料，嗯... 七点可以吗？'
+const POLISHED = '晚上吃饭吗？我想去那家新开的日料，七点可以吗？'
 
 export default function InputMockup() {
   return (

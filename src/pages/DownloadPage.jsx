@@ -6,28 +6,48 @@ const platforms = [
     name: 'App Store',
     desc: 'iPhone / iPad 用户',
     version: '2.1.0',
-    btn: '从 App Store 下载'
+    btn: '从 App Store 下载',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.8 8.3c-.1-1.7 1.1-3.1 2.6-3.8-.7-1-1.8-1.6-3-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.6 0-3.1 1-3.9 2.5-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.6-.9.9-1.8 1-1.9-.1 0-1.9-.7-1.9-2.9-.1-1.8 1.5-2.7 1.6-2.8-.9-1.3-2.2-1.4-2.7-1.5-1.3-.1-2.4.7-3 .7zM15.4 4.6c.7-.8 1.1-1.9.9-3-1 .1-2.1.6-2.8 1.5-.6.7-1.1 1.8-.9 2.9 1.1.1 2.1-.5 2.8-1.4z" />
+      </svg>
+    )
   },
   {
     platform: 'Android',
     name: '应用商店',
     desc: 'Android 手机用户',
     version: '2.1.0',
-    btn: '下载 Android 版'
+    btn: '下载 Android 版',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.6 9.2c0-.5-.1-1-.2-1.4l2.5-2.1c.2-.2.2-.5 0-.7l-.2-.3c-.2-.2-.5-.2-.7 0l-2.6 2.2c-.9-.7-2.1-1.1-3.4-1.1s-2.5.4-3.4 1.1L7 4.7c-.2-.2-.5-.2-.7 0l-.2.3c-.2.2-.2.5 0 .7l2.5 2.1c-.1.5-.2 1-.2 1.4 0 2.6 1.7 4.8 4 5.6v3.2H9.5c-.3 0-.5.2-.5.5v.5c0 .3.2.5.5.5h5c.3 0 .5-.2.5-.5v-.5c0-.3-.2-.5-.5-.5H13.6v-3.2c2.3-.8 4-3 4-5.6zM8.8 11c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm6.4 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" />
+      </svg>
+    )
   },
   {
     platform: 'Windows',
     name: '桌面版',
     desc: 'Windows 10 / 11',
     version: '2.1.0',
-    btn: '下载 Windows 版'
+    btn: '下载 Windows 版',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M2 4.5l8.5-1.1V11H2V4.5zM11.5 3.3L22 2v8.8h-10.5V3.3zM2 12.5h8.5v7.6L2 19V12.5zM11.5 12.5H22V22l-10.5-1.1V12.5z" />
+      </svg>
+    )
   },
   {
     platform: 'macOS',
     name: '桌面版',
     desc: 'macOS 12 及以上',
     version: '2.1.0',
-    btn: '下载 macOS 版'
+    btn: '下载 macOS 版',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.8 8.3c-.1-1.7 1.1-3.1 2.6-3.8-.7-1-1.8-1.6-3-1.7-1.3-.1-2.6.8-3.3.8-.7 0-1.8-.8-3-.8-1.6 0-3.1 1-3.9 2.5-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.6-.9.9-1.8 1-1.9-.1 0-1.9-.7-1.9-2.9-.1-1.8 1.5-2.7 1.6-2.8-.9-1.3-2.2-1.4-2.7-1.5-1.3-.1-2.4.7-3 .7zM15.4 4.6c.7-.8 1.1-1.9.9-3-1 .1-2.1.6-2.8 1.5-.6.7-1.1 1.8-.9 2.9 1.1.1 2.1-.5 2.8-1.4z" />
+      </svg>
+    )
   }
 ]
 
@@ -65,7 +85,7 @@ export default function DownloadPage() {
               <Reveal key={app.platform} delay={(i % 2) + 1} variant={['up', 'scale', 'left', 'right'][i % 4]}>
                 <div className="download-platform-card">
                   <div className="download-platform-icon">
-                    <span>{app.platform[0]}</span>
+                    {app.icon}
                   </div>
                   <div className="download-platform-info">
                     <h3>{app.platform}</h3>

@@ -3,12 +3,14 @@
   flex-direction: column;
   align-items: center;
   gap: 28px;
+  padding: 24px 0;
 }
 
 .adapter-wheel-wrap {
   position: relative;
   width: 320px;
   height: 320px;
+  margin: 0 auto;
 }
 
 .adapter-wheel {
@@ -58,7 +60,7 @@
   place-items: center;
   background: var(--grad-brand);
   color: #fff;
-  box-shadow: 0 12px 32px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 12px 32px rgba(232, 93, 78, 0.28);
 }
 
 .adapter-center-label {

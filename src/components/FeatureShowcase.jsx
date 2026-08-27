@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Reveal from './Reveal'
@@ -205,44 +205,89 @@ function EditMockup() {
   )
 }
 
+const TONE_PRESETS = [
+  {
+    key: 'casual',
+    label: '轻松',
+    text: '嘿，方案我看了，感觉不错，咱们再细化一下？'
+  },
+  {
+    key: 'formal',
+    label: '正式',
+    text: '该方案整体可行，建议进一步细化后推进实施。'
+  },
+  {
+    key: 'warm',
+    label: '亲切',
+    text: '这个方案我觉得挺好的，咱们一起再打磨打磨，让它更完善～'
+  }
+]
+
 function ToneMockup() {
+  const [active, setActive] = useState('formal')
+  const current = TONE_PRESETS.find((t) => t.key === active)
+
   return (
     <div className="mockup-tone">
       <div className="mockup-tone-tabs">
-        <div className="mockup-tone-tab mockup-tone-active">正式</div>
-        <div className="mockup-tone-tab">轻松</div>
-        <div className="mockup-tone-tab">亲切</div>
+        {TONE_PRESETS.map((t) => (
+          <button
+            key={t.key}
+            className={`mockup-tone-tab ${active === t.key ? 'mockup-tone-active' : ''}`}
+            onClick={() => setActive(t.key)}
+            type="button"
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
-      <div className="mockup-tone-card">
-        <div className="mockup-tone-label">轻松版</div>
-        <p className="mockup-tone-text">嘿，方案我看了，感觉不错，咱们再细化一下？</p>
-      </div>
-      <div className="mockup-tone-card mockup-tone-card-active">
-        <div className="mockup-tone-label">正式版</div>
-        <p className="mockup-tone-text">该方案整体可行，建议进一步细化后推进实施。</p>
+
+      <div className="mockup-tone-chat">
+        <div className="mockup-tone-bubble mockup-tone-bubble-them">
+          <span className="mockup-tone-label">原始表达</span>
+          <p className="mockup-tone-text">方案我看了，还可以，再改改吧。</p>
+        </div>
+        <div className="mockup-tone-bubble mockup-tone-bubble-me">
+          <span className="mockup-tone-label">{current.label}版</span>
+          <p className="mockup-tone-text" key={active}>{current.text}</p>
+        </div>
       </div>
     </div>
   )
 }
 
+const VOCAB_WORDS = ['流星语', 'Typeless', 'LLM', '多模态']
+
 function VocabMockup() {
   return (
     <div className="mockup-vocab">
-      <div className="mockup-vocab-header">
-        <div className="mockup-vocab-title">个人词库</div>
-        <div className="mockup-vocab-count">4 个词条</div>
-      </div>
-      <div className="mockup-vocab-list">
-        {['流星语', 'Typeless', 'LLM', '多模态'].map((word) => (
-          <div key={word} className="mockup-vocab-item">
-            <span>{word}</span>
-            <button className="mockup-vocab-delete">×</button>
-          </div>
-        ))}
-      </div>
-      <div className="mockup-vocab-add">
-        <span>+</span>
-        添加新词
+      <div className="mockup-vocab-chat">
+        <div className="mockup-vocab-header">
+          <div className="mockup-vocab-title">个人词库</div>
+          <div className="mockup-vocab-count">{VOCAB_WORDS.length} 个词条</div>
+        </div>
+
+        <div className="mockup-vocab-bubble">
+          <span className="mockup-vocab-label">语音转写</span>
+          <p className="mockup-vocab-text">
+            这次{' '}
+            <span className="mockup-vocab-highlight">流星语</span>{' '}
+            接入了{' '}
+            <span className="mockup-vocab-highlight">LLM</span>{' '}
+            多模态能力，{' '}
+            <span className="mockup-vocab-highlight">Typeless</span>{' '}
+            团队正在做最后测试。
+          </p>
+        </div>
+
+        <div className="mockup-vocab-words">
+          {VOCAB_WORDS.map((word) => (
+            <span key={word} className="mockup-vocab-chip">
+              {word}
+            </span>
+          ))}
+          <span className="mockup-vocab-chip mockup-vocab-chip-add">+ 添加</span>
+        </div>
       </div>
     </div>
   )
