@@ -4,6 +4,11 @@
 @import './components/Footer.css';
 @import './components/AuthModal.css';
 @import './components/LegalPage.css';
+@import './components/Showcase.css';
+@import './components/MindSection.css';
+@import './components/PlatformSection.css';
+@import './components/AdapterCarousel.css';
+@import './components/MindToText.css';
 @import './pages/pages.css';
 
 .app {

@@ -1,0 +1,9 @@
+.platform {
+  background: var(--bg);
+}
+
+.platform-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}

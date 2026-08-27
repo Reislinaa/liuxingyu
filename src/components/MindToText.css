@@ -1,0 +1,58 @@
+.mind {
+  text-align: center;
+}
+
+.mind-stage {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.mind-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.mind-line {
+  stroke: var(--primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.6;
+  transform-origin: center;
+  transform: scaleX(0);
+  transform-box: fill-box;
+}
+
+.mind-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.mind-dot-halo {
+  fill: rgba(79, 70, 229, 0.12);
+  stroke: rgba(79, 70, 229, 0.45);
+  stroke-width: 1.5;
+}
+
+.mind-dot-text {
+  font-size: 15px;
+  fill: var(--text);
+  font-weight: 500;
+}
+
+.mind-sentence {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-top: 36px;
+  line-height: 1.4;
+}
+
+.mind-char {
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}

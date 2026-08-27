@@ -1,0 +1,86 @@
+.showcase {
+  background: var(--bg-2);
+}
+
+.showcase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+}
+
+.showcase-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.showcase-row-rev .showcase-body {
+  order: -1;
+}
+
+.showcase-media {
+  position: relative;
+}
+
+.showcase-media img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+
+/* 一层柔和的品牌光晕叠加在截图上，呼应"流星照亮" */
+.showcase-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(140deg, rgba(79, 70, 229, 0.06), transparent 45%),
+    linear-gradient(-140deg, rgba(14, 165, 233, 0.06), transparent 45%);
+  pointer-events: none;
+}
+
+.showcase-body {
+  padding: 12px 0;
+}
+
+.showcase-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.showcase-title {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.showcase-desc {
+  font-size: 1.02rem;
+  color: var(--text-2);
+  line-height: 1.85;
+  max-width: 440px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .showcase-row,
+  .showcase-row-rev {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .showcase-row-rev .showcase-body {
+    order: 0;
+  }
+  .showcase-list {
+    gap: 64px;
+  }
+}
